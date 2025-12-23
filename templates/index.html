@@ -55,11 +55,14 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{{ url_for('voir_devis', devis_id=d.id) }}" class="btn btn-sm btn-outline-primary">
-                        👁️ Voir
+                    <a href="{{ url_for('voir_devis', devis_id=d.id) }}" class="btn btn-sm btn-outline-primary" title="Voir">
+                        👁️
                     </a>
-                    <button onclick="supprimerDevis({{ d.id }}, '{{ d.reference }}')" class="btn btn-sm btn-outline-danger ms-2">
-                        🗑️ Supprimer
+                    <a href="{{ url_for('nouveau_devis', devis_id=d.id) }}" class="btn btn-sm btn-outline-warning ms-2" title="Modifier">
+                        ✏️
+                    </a>
+                    <button onclick="supprimerDevis({{ d.id }}, '{{ d.reference }}')" class="btn btn-sm btn-outline-danger ms-2" title="Supprimer">
+                        🗑️
                     </button>
                 </td>
             </tr>

@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Nouveau Devis{% endblock %}
+{% block title %}{% if devis %}Modifier le Devis{% else %}Nouveau Devis{% endif %}{% endblock %}
 
 {% block content %}
-<h1>➕ Créer un Nouveau Devis</h1>
+<h1>{% if devis %}✏️ Modifier le Devis{% else %}➕ Créer un Nouveau Devis{% endif %}</h1>
 
 <form method="POST" class="mt-4">
+    {% if devis %}
+    <input type="hidden" name="devis_id" value="{{ devis.id }}">
+    {% endif %}
     <div class="card">
         <div class="card-header bg-primary text-white">
             <h5 class="mb-0">Informations du Devis</h5>
@@ -17,7 +20,9 @@
                     <select class="form-select" id="client_id" name="client_id" required>
                         <option value="">Sélectionner un client</option>
                         {% for client in clients %}
-                        <option value="{{ client.id }}">{{ client.nom }} ({{ client.reference }})</option>
+                        <option value="{{ client.id }}" {% if devis and devis.client_id == client.id %}selected{% endif %}>
+                            {{ client.nom }} ({{ client.reference }})
+                        </option>
                         {% endfor %}
                     </select>
                     <small class="form-text text-muted">
@@ -26,19 +31,21 @@
                 </div>
                 <div class="col-md-6">
                     <label for="reference" class="form-label">Référence du Devis *</label>
-                    <input type="text" class="form-control" id="reference" name="reference" required>
+                    <input type="text" class="form-control" id="reference" name="reference" 
+                           value="{{ devis.reference if devis else '' }}" required>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="date_cotation" class="form-label">Date de Cotation *</label>
-                    <input type="date" class="form-control" id="date_cotation" name="date_cotation" required>
+                    <input type="date" class="form-control" id="date_cotation" name="date_cotation" 
+                           value="{{ devis.date_cotation.strftime('%Y-%m-%d') if devis and devis.date_cotation else '' }}" required>
                 </div>
                 <div class="col-md-6">
                     <label for="taux_change" class="form-label">Taux de Change (Ar/€) *</label>
                     <input type="number" step="0.01" class="form-control" id="taux_change" 
-                           name="taux_change" value="4420" required>
+                           name="taux_change" value="{{ devis.taux_change if devis else '4420' }}" required>
                 </div>
             </div>
             
@@ -46,14 +53,14 @@
                 <div class="col-md-6">
                     <label for="marge_percent" class="form-label">Marge (%) *</label>
                     <select class="form-select" id="marge_percent" name="marge_percent" required>
-                        <option value="14">14%</option>
-                        <option value="16">16%</option>
-                        <option value="18" selected>18%</option>
-                        <option value="20">20%</option>
-                        <option value="22">22%</option>
-                        <option value="24">24%</option>
-                        <option value="25">25%</option>
-                        <option value="28">28%</option>
+                        <option value="14" {% if devis and devis.marge_percent == 14 %}selected{% endif %}>14%</option>
+                        <option value="16" {% if devis and devis.marge_percent == 16 %}selected{% endif %}>16%</option>
+                        <option value="18" {% if not devis or devis.marge_percent == 18 %}selected{% endif %}>18%</option>
+                        <option value="20" {% if devis and devis.marge_percent == 20 %}selected{% endif %}>20%</option>
+                        <option value="22" {% if devis and devis.marge_percent == 22 %}selected{% endif %}>22%</option>
+                        <option value="24" {% if devis and devis.marge_percent == 24 %}selected{% endif %}>24%</option>
+                        <option value="25" {% if devis and devis.marge_percent == 25 %}selected{% endif %}>25%</option>
+                        <option value="28" {% if devis and devis.marge_percent == 28 %}selected{% endif %}>28%</option>
                     </select>
                 </div>
             </div>
@@ -65,22 +72,22 @@
                 <div class="col-md-3">
                     <label for="nombre_personnes" class="form-label">Total *</label>
                     <input type="number" class="form-control" id="nombre_personnes" 
-                           name="nombre_personnes" min="1" required>
+                           name="nombre_personnes" min="1" value="{{ devis.nombre_personnes if devis else '' }}" required>
                 </div>
                 <div class="col-md-3">
                     <label for="nombre_adultes" class="form-label">Adultes</label>
                     <input type="number" class="form-control" id="nombre_adultes" 
-                           name="nombre_adultes" min="0" value="0">
+                           name="nombre_adultes" min="0" value="{{ devis.nombre_adultes if devis else '0' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="nombre_enfants" class="form-label">Enfants</label>
                     <input type="number" class="form-control" id="nombre_enfants" 
-                           name="nombre_enfants" min="0" value="0">
+                           name="nombre_enfants" min="0" value="{{ devis.nombre_enfants if devis else '0' }}">
                 </div>
                 <div class="col-md-3">
                     <label for="nombre_bebes" class="form-label">Bébés</label>
                     <input type="number" class="form-control" id="nombre_bebes" 
-                           name="nombre_bebes" min="0" value="0">
+                           name="nombre_bebes" min="0" value="{{ devis.nombre_bebes if devis else '0' }}">
                 </div>
             </div>
 
@@ -88,7 +95,7 @@
                 <div class="col-md-6">
                     <label for="nombre_chambres" class="form-label">Nombre de Chambres</label>
                     <input type="number" class="form-control" id="nombre_chambres" 
-                           name="nombre_chambres" min="0" value="0">
+                           name="nombre_chambres" min="0" value="{{ devis.nombre_chambres if devis else '0' }}">
                 </div>
             </div>
         </div>
@@ -119,7 +126,7 @@
                 <div class="col-md-6">
                     <label for="prix_guide_par_jour" class="form-label">Prix Guide par Jour (Ar)</label>
                     <input type="number" class="form-control" id="prix_guide_par_jour" 
-                           name="prix_guide_par_jour" min="0" value="0" step="1000"
+                           name="prix_guide_par_jour" min="0" value="{% if guides_accompagnateurs and guides_accompagnateurs[0] %}{{ guides_accompagnateurs[0].prix_par_jour or 0 }}{% else %}0{% endif %}" step="1000"
                            placeholder="Ex: 280000">
                     <small class="form-text text-muted">Le prix s'appliquera pour tous les jours de voyage</small>
                 </div>
@@ -168,18 +175,18 @@
                 <div class="col-md-4">
                     <label class="form-label">Inclure transfert aéroport ?</label>
                     <div class="form-check form-switch mt-2">
-                        <input class="form-check-input" type="checkbox" id="transfert_aeroport" name="transfert_aeroport" onchange="toggleTransfert()">
+                        <input class="form-check-input" type="checkbox" id="transfert_aeroport" name="transfert_aeroport" onchange="toggleTransfert()" {% if transferts_aeroport and transferts_aeroport|length > 0 %}checked{% endif %}>
                     </div>
                 </div>
-                <div class="col-md-4" id="transfert_type_container" style="display: none;">
+                <div class="col-md-4" id="transfert_type_container" style="display: {% if transferts_aeroport and transferts_aeroport|length > 0 %}block{% else %}none{% endif %};">
                     <label for="type_transfert" class="form-label">Type de transfert</label>
                     <select class="form-select" id="type_transfert" name="type_transfert" onchange="calculerPrixTransfert()">
-                        <option value="Aéroport-Hôtel">Aéroport → Hôtel</option>
-                        <option value="Hôtel-Aéroport">Hôtel → Aéroport</option>
-                        <option value="Aller-Retour">Aller-Retour</option>
+                        <option value="Aéroport-Hôtel" {% if transferts_aeroport and transferts_aeroport[0] and transferts_aeroport[0].type_transfert == 'Aéroport-Hôtel' %}selected{% endif %}>Aéroport → Hôtel</option>
+                        <option value="Hôtel-Aéroport" {% if transferts_aeroport and transferts_aeroport[0] and transferts_aeroport[0].type_transfert == 'Hôtel-Aéroport' %}selected{% endif %}>Hôtel → Aéroport</option>
+                        <option value="Aller-Retour" {% if transferts_aeroport and transferts_aeroport[0] and transferts_aeroport[0].type_transfert == 'Aller-Retour' %}selected{% endif %}>Aller-Retour</option>
                     </select>
                 </div>
-                <div class="col-md-4" id="transfert_prix_container" style="display: none;">
+                <div class="col-md-4" id="transfert_prix_container" style="display: {% if transferts_aeroport and transferts_aeroport|length > 0 %}block{% else %}none{% endif %};">
                     <label class="form-label">Prix Transfert</label>
                     <div class="form-control-plaintext" id="prix_transfert">
                         <strong class="text-danger">0 Ar</strong>
@@ -190,15 +197,16 @@
     </div>
 
     <div class="mt-4">
-        <button type="submit" class="btn btn-primary">Créer le Devis</button>
+        <button type="submit" class="btn btn-primary">{% if devis %}Modifier le Devis{% else %}Créer le Devis{% endif %}</button>
         <a href="{{ url_for('index') }}" class="btn btn-secondary">Annuler</a>
     </div>
 </form>
 {% endblock %}
 
 {% block scripts %}
-<script data-itineraires='{{ itineraires | tojson }}'>
+<script data-itineraires='{{ itineraires | tojson }}' data-jours-existants='{{ jours_existants | tojson if jours_existants else "[]" }}'>
 const ITINERAIRES = JSON.parse(document.currentScript.dataset.itineraires);
+const JOURS_EXISTANTS = JSON.parse(document.currentScript.dataset.joursExistants || '[]');
 let jourCounter = 0;
 let CONFIG_PRIX = {};
 let TYPES_LOCATIONS = [];
@@ -231,7 +239,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.dataset.prix = type.prix_journalier_sans_carburant;
                 select.appendChild(option);
             });
+            
+            // Préremplir le type de location si existant
+            {% if type_location_journaliere and type_location_journaliere.type_location_id %}
+            setTimeout(() => {
+                if (select) {
+                    select.value = {{ type_location_journaliere.type_location_id }};
+                    calculerPrixLocation();
+                }
+            }, 200);
+            {% endif %}
         });
+    
+    // Préremplir le prix du guide et recalculer
+    {% if guides_accompagnateurs and guides_accompagnateurs[0] %}
+    setTimeout(() => {
+        const prixGuideInput = document.getElementById('prix_guide_par_jour');
+        if (prixGuideInput) {
+            calculerPrixGuide();
+        }
+    }, 300);
+    {% endif %}
+    
+    // Préremplir le transfert aéroport si existant
+    {% if transferts_aeroport and transferts_aeroport|length > 0 %}
+    setTimeout(() => {
+        const transfertCheckbox = document.getElementById('transfert_aeroport');
+        if (transfertCheckbox && !transfertCheckbox.checked) {
+            transfertCheckbox.checked = true;
+            toggleTransfert();
+        }
+    }, 400);
+    {% endif %}
+    
+    // Préremplir les jours existants si on modifie un devis
+    if (JOURS_EXISTANTS && JOURS_EXISTANTS.length > 0) {
+        JOURS_EXISTANTS.forEach(jour => {
+            ajouterJourAvecDonnees(jour);
+        });
+    }
 });
 
 // Calculer le prix de location journalière
@@ -426,6 +472,163 @@ function ajouterJour() {
     
     // Charger les types de voitures pour ce nouveau jour
     chargerTypesVoitures(jourCounter);
+    
+    // Recalculer le prix du guide et location
+    calculerPrixGuide();
+    calculerPrixLocation();
+}
+
+// Fonction pour ajouter un jour avec des données préremplies (pour modification)
+function ajouterJourAvecDonnees(jourData) {
+    jourCounter++;
+    const container = document.getElementById('jours_container');
+    
+    const jourDiv = document.createElement('div');
+    jourDiv.className = 'card mb-3 jour-item';
+    jourDiv.id = `jour_${jourCounter}`;
+    jourDiv.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">Jour ${jourCounter}</h6>
+                <button type="button" class="btn btn-sm btn-danger" onclick="supprimerJour(${jourCounter})">🗑️</button>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Numéro du Jour *</label>
+                    <input type="number" class="form-control jour-numero" value="${jourData.numero_jour || jourCounter}" min="1" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Date (Jour du mois)</label>
+                    <input type="number" class="form-control jour-date" min="1" max="31" placeholder="Ex: 17" value="${jourData.date_jour || ''}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Itinéraire *</label>
+                    <select class="form-select jour-itineraire" required onchange="chargerHotels(${jourCounter}); chargerTypesVoitures(${jourCounter}); rechargerVisites(${jourCounter})">
+                        <option value="">Sélectionner un itinéraire</option>
+                        ${ITINERAIRES.map(it => `<option value="${it.id}" ${jourData.itineraire_id == it.id ? 'selected' : ''}>${it.nom}</option>`).join('')}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Hôtel</label>
+                    <select class="form-select jour-hotel" onchange="calculerPrixJour(${jourCounter})">
+                        <option value="">Sélectionner d'abord un itinéraire</option>
+                    </select>
+                    <small class="form-text text-muted jour-prix-info"></small>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Type Chambre</label>
+                    <select class="form-select jour-type-chambre" onchange="calculerPrixJour(${jourCounter})">
+                        <option value="Double" ${jourData.type_chambre == 'Double' ? 'selected' : ''}>Double</option>
+                        <option value="Triple" ${jourData.type_chambre == 'Triple' ? 'selected' : ''}>Triple</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Nb Chambres</label>
+                    <input type="number" class="form-control jour-nb-chambres" value="${jourData.nombre_chambres || 1}" min="1" onchange="calculerPrixJour(${jourCounter})">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Transfert (Ar)</label>
+                    <input type="number" class="form-control jour-transfert" value="${jourData.transfert_htl || 0}" min="0" step="0.01" onchange="calculerPrixJour(${jourCounter})">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Prix Total</label>
+                    <div class="form-control-plaintext jour-prix-total">
+                        <strong class="text-success">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">📍 Visites</h6>
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="ajouterVisite(${jourCounter})">
+                    ➕ Ajouter une Visite
+                </button>
+            </div>
+            <div class="visites-container-${jourCounter}">
+                <!-- Les visites seront ajoutées ici dynamiquement -->
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <label class="form-label">Total Visites du Jour</label>
+                    <div class="form-control-plaintext jour-prix-visite-total-${jourCounter}">
+                        <strong class="text-info">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <h6 class="mb-3">🚗 Location de Véhicule</h6>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Type de Voiture</label>
+                    <select class="form-select jour-type-voiture" onchange="calculerCarburantJour(${jourCounter})">
+                        <option value="">Sélectionner un type</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Kilométrage (km)</label>
+                    <input type="number" class="form-control jour-kilometrage" value="0" min="0" step="0.01" onchange="calculerCarburantJour(${jourCounter})">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Prix Carburant à la Pompe (Ar/L)</label>
+                    <input type="number" class="form-control jour-prix-pompe" value="0" min="0" step="0.01" onchange="calculerCarburantJour(${jourCounter})">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Consommation (L)</label>
+                    <div class="form-control-plaintext jour-consommation">
+                        <strong>0 L</strong>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Prix Total Carburant</label>
+                    <div class="form-control-plaintext jour-prix-carburant-total">
+                        <strong class="text-warning">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    container.appendChild(jourDiv);
+    
+    // Charger les hôtels et types de voitures pour ce jour
+    if (jourData.itineraire_id) {
+        chargerHotels(jourCounter);
+        chargerTypesVoitures(jourCounter);
+        rechargerVisites(jourCounter);
+        
+        // Attendre que les selects soient remplis avant de sélectionner l'hôtel et préremplir les données
+        setTimeout(() => {
+            const hotelSelect = jourDiv.querySelector('.jour-hotel');
+            if (hotelSelect && jourData.hotel_id) {
+                hotelSelect.value = jourData.hotel_id;
+                calculerPrixJour(jourCounter);
+            }
+            
+            // Préremplir les visites existantes (après avoir chargé les visites disponibles)
+            if (jourData.visites && jourData.visites.length > 0) {
+                setTimeout(() => {
+                    jourData.visites.forEach(visite => {
+                        ajouterVisiteAvecDonnees(jourCounter, visite);
+                    });
+                }, 500);
+            }
+            
+            // Préremplir les locations de véhicules existantes
+            if (jourData.locations && jourData.locations.length > 0) {
+                setTimeout(() => {
+                    jourData.locations.forEach(location => {
+                        preRemplirLocationAvecDonnees(jourCounter, location);
+                    });
+                }, 600);
+            }
+        }, 800);
+    } else {
+        chargerTypesVoitures(jourCounter);
+    }
     
     // Recalculer le prix du guide et location
     calculerPrixGuide();
@@ -633,6 +836,74 @@ function ajouterVisite(jourNum) {
     visitesContainer.appendChild(visiteDiv);
 }
 
+// Fonction pour ajouter une visite avec des données préremplies (pour modification)
+function ajouterVisiteAvecDonnees(jourNum, visiteData) {
+    if (!visiteCounter[jourNum]) {
+        visiteCounter[jourNum] = 0;
+    }
+    visiteCounter[jourNum]++;
+    
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const visitesContainer = jourDiv.querySelector(`.visites-container-${jourNum}`);
+    if (!visitesContainer) return;
+    
+    // Récupérer les visites disponibles depuis le dataset
+    let visitesDisponibles = [];
+    if (jourDiv.dataset.visitesDisponibles) {
+        visitesDisponibles = JSON.parse(jourDiv.dataset.visitesDisponibles);
+    } else {
+        console.warn('Visites disponibles non chargées pour le jour', jourNum);
+        return;
+    }
+    
+    const visiteId = `visite_${jourNum}_${visiteCounter[jourNum]}`;
+    const visiteDiv = document.createElement('div');
+    visiteDiv.className = 'card mb-2 visite-item';
+    visiteDiv.id = visiteId;
+    
+    visiteDiv.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="mb-0 small">Visite</h6>
+                <button type="button" class="btn btn-sm btn-outline-danger" onclick="supprimerVisite('${visiteId}', ${jourNum})">
+                    🗑️
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label class="form-label small">Lieu de Visite</label>
+                    <select class="form-select visite-select" onchange="calculerPrixVisite('${visiteId}', ${jourNum})">
+                        <option value="">Sélectionner une visite</option>
+                        ${visitesDisponibles.map(v => {
+                            const vData = JSON.stringify(v).replace(/'/g, "&apos;");
+                            return `<option value="${v.id}" data-visite='${vData}' ${visiteData.visite_id == v.id ? 'selected' : ''}>${v.nom}</option>`;
+                        }).join('')}
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label small">Nombre de Personnes</label>
+                    <input type="number" class="form-control visite-nb-personnes" value="${visiteData.nombre_personnes || 1}" min="1" onchange="calculerPrixVisite('${visiteId}', ${jourNum})">
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label small">Prix Total</label>
+                    <div class="form-control-plaintext visite-prix-total">
+                        <strong class="text-info small">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    visitesContainer.appendChild(visiteDiv);
+    
+    // Calculer le prix de la visite après l'ajout
+    setTimeout(() => {
+        calculerPrixVisite(visiteId, jourNum);
+    }, 100);
+}
+
 // Supprimer une visite
 function supprimerVisite(visiteId, jourNum) {
     const visiteDiv = document.getElementById(visiteId);
@@ -805,6 +1076,36 @@ function calculerCarburantJour(jourNum) {
     
     if (consommationDiv) consommationDiv.innerHTML = `<strong>${consommationTotale.toFixed(2)} L</strong>`;
     if (prixTotalDiv) prixTotalDiv.innerHTML = `<strong class="text-warning">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+}
+
+// Fonction pour préremplir une location de véhicule avec des données (pour modification)
+function preRemplirLocationAvecDonnees(jourNum, locationData) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const typeVoitureSelect = jourDiv.querySelector('.jour-type-voiture');
+    const kilometrageInput = jourDiv.querySelector('.jour-kilometrage');
+    const prixPompeInput = jourDiv.querySelector('.jour-prix-pompe');
+    
+    if (!typeVoitureSelect || !kilometrageInput || !prixPompeInput) return;
+    
+    // Attendre que les types de voitures soient chargés
+    setTimeout(() => {
+        if (locationData.type_voiture_id) {
+            typeVoitureSelect.value = locationData.type_voiture_id;
+        }
+        
+        if (locationData.kilometrage) {
+            kilometrageInput.value = locationData.kilometrage;
+        }
+        
+        if (locationData.prix_carburant_pompe) {
+            prixPompeInput.value = locationData.prix_carburant_pompe;
+        }
+        
+        // Recalculer le carburant
+        calculerCarburantJour(jourNum);
+    }, 200);
 }
 
 // Modifier la soumission du formulaire pour inclure les jours
