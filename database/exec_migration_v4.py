@@ -14,7 +14,7 @@ DB_CONFIG = {
     'host': os.environ.get('DB_HOST', 'localhost'),
     'database': os.environ.get('DB_NAME', 'cotisation_madagascar'),
     'user': os.environ.get('DB_USER', 'postgres'),
-    'password': os.environ.get('DB_PASSWORD', 'postgres'),
+    'password': os.environ.get('DB_PASSWORD', '2475'),
     'port': int(os.environ.get('DB_PORT', 5432))
 }
 

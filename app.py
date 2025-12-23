@@ -233,9 +233,86 @@ def voir_devis(devis_id):
 
 @app.route('/devis/nouveau', methods=['GET', 'POST'])
 def nouveau_devis():
-    """Créer un nouveau devis"""
+    """Créer ou modifier un devis"""
+    devis_id = request.args.get('devis_id', type=int)
+    devis_existant = None
+    jours_existants = None
+    guides_accompagnateurs = []
+    transferts_aeroport = []
+    type_location_journaliere = None
+    
+    # Si on modifie un devis existant, charger ses données
+    if devis_id and request.method == 'GET':
+        devis_existant = db_query("""
+            SELECT * FROM devis WHERE id = %s
+        """, (devis_id,), fetch_one=True)
+        
+        if devis_existant:
+            # Charger les jours de voyage avec leurs données
+            jours_raw = db_query("""
+                SELECT jv.*, 
+                       h.hotel_id, h.type_chambre, h.nombre_chambres, h.transfert_htl,
+                       i.nom as itineraire_nom
+                FROM jours_voyage jv
+                LEFT JOIN hebergements h ON h.jour_voyage_id = jv.id
+                LEFT JOIN itineraires i ON i.id = jv.itineraire_id
+                WHERE jv.devis_id = %s
+                ORDER BY jv.numero_jour
+            """, (devis_id,), fetch_all=True)
+            
+            # Pour chaque jour, charger les visites et locations
+            jours_existants = []
+            for jour in (jours_raw or []):
+                jour_dict = dict(jour)
+                jour_id = jour['id']
+                
+                # Charger les visites pour ce jour
+                visites = db_query("""
+                    SELECT vj.*, v.nom as visite_nom
+                    FROM visites_jour vj
+                    LEFT JOIN visites v ON vj.visite_id = v.id
+                    WHERE vj.jour_voyage_id = %s
+                """, (jour_id,), fetch_all=True)
+                jour_dict['visites'] = visites or []
+                
+                # Charger les locations de véhicules pour ce jour
+                locations = db_query("""
+                    SELECT lv.*, tv.nom as type_voiture_nom
+                    FROM locations_vehicules lv
+                    LEFT JOIN types_voitures tv ON lv.type_voiture_id = tv.id
+                    WHERE lv.jour_voyage_id = %s
+                """, (jour_id,), fetch_all=True)
+                jour_dict['locations'] = locations or []
+                
+                jours_existants.append(jour_dict)
+            
+            # Charger les guides accompagnateurs pour ce devis
+            guides_accompagnateurs = db_query("""
+                SELECT * FROM guides_accompagnateurs WHERE devis_id = %s
+            """, (devis_id,), fetch_all=True)
+            
+            # Charger les transferts aéroport pour ce devis
+            transferts_aeroport = db_query("""
+                SELECT * FROM transferts_aeroport WHERE devis_id = %s
+            """, (devis_id,), fetch_all=True)
+            
+            # Charger les locations journalières pour ce devis (on prend le premier pour le type)
+            type_location_journaliere = db_query("""
+                SELECT DISTINCT lj.type_location_id, tlj.nom as type_location_nom
+                FROM locations_journalieres lj
+                JOIN jours_voyage jv ON lj.jour_voyage_id = jv.id
+                LEFT JOIN types_locations_journalieres tlj ON lj.type_location_id = tlj.id
+                WHERE jv.devis_id = %s AND lj.type_location_id IS NOT NULL
+                LIMIT 1
+            """, (devis_id,), fetch_one=True)
+    else:
+        guides_accompagnateurs = []
+        transferts_aeroport = []
+        type_location_journaliere = None
+    
     if request.method == 'POST':
         # Récupérer les données du formulaire
+        devis_id_form = request.form.get('devis_id', type=int)
         client_id = request.form.get('client_id')
         reference = request.form.get('reference')
         date_cotation = request.form.get('date_cotation')
@@ -247,20 +324,52 @@ def nouveau_devis():
         taux_change = float(request.form.get('taux_change', 4420))
         marge_percent = float(request.form.get('marge_percent', 18))
         
-        # Créer le devis
-        result = db_query("""
-            INSERT INTO devis (
-                client_id, reference, date_cotation, nombre_personnes,
-                nombre_adultes, nombre_enfants, nombre_bebes, nombre_chambres,
-                taux_change, marge_percent
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            RETURNING id
-        """, (client_id, reference, date_cotation, nombre_personnes,
-              nombre_adultes, nombre_enfants, nombre_bebes, nombre_chambres,
-              taux_change, marge_percent), fetch_one=True)
+        # Si c'est une modification, mettre à jour le devis existant
+        if devis_id_form:
+            db_query("""
+                UPDATE devis SET
+                    client_id = %s, reference = %s, date_cotation = %s, nombre_personnes = %s,
+                    nombre_adultes = %s, nombre_enfants = %s, nombre_bebes = %s, nombre_chambres = %s,
+                    taux_change = %s, marge_percent = %s
+                WHERE id = %s
+            """, (client_id, reference, date_cotation, nombre_personnes,
+                  nombre_adultes, nombre_enfants, nombre_bebes, nombre_chambres,
+                  taux_change, marge_percent, devis_id_form))
+            devis_id = devis_id_form
+            
+            # Supprimer les jours existants pour les recréer
+            db_query("DELETE FROM jours_voyage WHERE devis_id = %s", (devis_id,))
+            db_query("DELETE FROM transferts_aeroport WHERE devis_id = %s", (devis_id,))
+            db_query("DELETE FROM guides_accompagnateurs WHERE devis_id = %s", (devis_id,))
+        else:
+            # Créer un nouveau devis
+            result = db_query("""
+                INSERT INTO devis (
+                    client_id, reference, date_cotation, nombre_personnes,
+                    nombre_adultes, nombre_enfants, nombre_bebes, nombre_chambres,
+                    taux_change, marge_percent
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                RETURNING id
+            """, (client_id, reference, date_cotation, nombre_personnes,
+                  nombre_adultes, nombre_enfants, nombre_bebes, nombre_chambres,
+                  taux_change, marge_percent), fetch_one=True)
+            
+            if result:
+                devis_id = result['id']
+            else:
+                flash('Erreur lors de la création du devis', 'error')
+                clients = db_query("SELECT id, nom, reference FROM clients ORDER BY nom", fetch_all=True)
+                itineraires = db_query("SELECT id, nom FROM itineraires ORDER BY ordre, nom", fetch_all=True)
+                return render_template('nouveau_devis.html', 
+                                     clients=clients or [], 
+                                     itineraires=itineraires or [],
+                                     devis=None,
+                                     jours_existants=[],
+                                     guides_accompagnateurs=[],
+                                     transferts_aeroport=[],
+                                     type_location_journaliere=None)
         
-        if result:
-            devis_id = result['id']
+        if devis_id:
             
             # Traiter les jours de voyage si fournis
             jours_data = request.form.getlist('jours[]')
@@ -447,10 +556,11 @@ def nouveau_devis():
             # Calculer automatiquement les totaux
             calculer_totaux_devis(devis_id)
             
-            flash('Devis créé avec succès', 'success')
+            if devis_id_form:
+                flash('Devis modifié avec succès', 'success')
+            else:
+                flash('Devis créé avec succès', 'success')
             return redirect(url_for('gerer_jours_voyage', devis_id=devis_id))
-        else:
-            flash('Erreur lors de la création du devis', 'error')
     
     # Récupérer la liste des clients
     clients = db_query("SELECT id, nom, reference FROM clients ORDER BY nom", fetch_all=True)
@@ -458,7 +568,14 @@ def nouveau_devis():
     # Récupérer la liste des itinéraires
     itineraires = db_query("SELECT id, nom FROM itineraires ORDER BY ordre, nom", fetch_all=True)
     
-    return render_template('nouveau_devis.html', clients=clients or [], itineraires=itineraires or [])
+    return render_template('nouveau_devis.html', 
+                         clients=clients or [], 
+                         itineraires=itineraires or [],
+                         devis=devis_existant,
+                         jours_existants=jours_existants or [],
+                         guides_accompagnateurs=guides_accompagnateurs or [],
+                         transferts_aeroport=transferts_aeroport or [],
+                         type_location_journaliere=type_location_journaliere)
 
 @app.route('/devis/<int:devis_id>/jours', methods=['GET', 'POST'])
 def gerer_jours_voyage(devis_id):
