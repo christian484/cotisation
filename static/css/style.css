@@ -1,0 +1,268 @@
+/* Style ERPNext/Frappe - Complément à Bootstrap */
+
+:root {
+    /* Couleurs ERPNext/Frappe */
+    --frappe-bg: #F5F7FA;
+    --frappe-white: #FFFFFF;
+    --frappe-border: #E5E7EB;
+    --frappe-text: #1F2937;
+    --frappe-text-muted: #6B7280;
+    --frappe-primary: #2490EF;
+    --frappe-primary-hover: #1E7CD6;
+    --frappe-success: #10B981;
+    --frappe-warning: #F59E0B;
+    --frappe-danger: #EF4444;
+    --frappe-info: #3B82F6;
+    
+    /* Ombres subtiles ERPNext */
+    --frappe-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --frappe-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Fond de page ERPNext */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--frappe-bg);
+    color: var(--frappe-text);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Navbar ERPNext - Complément à Bootstrap */
+.navbar {
+    border-bottom: 1px solid var(--frappe-border);
+    box-shadow: var(--frappe-shadow-sm);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+/* Cards ERPNext - Complément à Bootstrap */
+.card {
+    border: 1px solid var(--frappe-border);
+    border-radius: 8px;
+    box-shadow: var(--frappe-shadow);
+    background-color: var(--frappe-white);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--frappe-border);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 1rem 1.5rem;
+}
+
+/* Headers colorés gardent leur style Bootstrap mais avec bordure améliorée */
+.card-header.bg-primary,
+.card-header.bg-success,
+.card-header.bg-info,
+.card-header.bg-warning,
+.card-header.bg-danger {
+    border-bottom: none;
+}
+
+/* Tables ERPNext - Complément à Bootstrap */
+.table {
+    background-color: var(--frappe-white);
+}
+
+.table thead th {
+    background-color: #F9FAFB;
+    border-bottom: 1px solid var(--frappe-border);
+    color: var(--frappe-text);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.75rem 1rem;
+}
+
+.table tbody td {
+    border-bottom: 1px solid var(--frappe-border);
+    padding: 1rem;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FAFBFC;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #F3F4F6;
+}
+
+/* Table dark garde son style Bootstrap */
+.table-dark thead th {
+    background-color: #1F2937;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons ERPNext - Complément à Bootstrap */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+/* Form controls ERPNext - Complément à Bootstrap */
+.form-control,
+.form-select {
+    border: 1px solid var(--frappe-border);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--frappe-primary);
+    box-shadow: 0 0 0 3px rgba(36, 144, 239, 0.1);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--frappe-text);
+    font-size: 0.875rem;
+}
+
+/* Badges ERPNext - Complément à Bootstrap */
+.badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Alerts ERPNext - Complément à Bootstrap */
+.alert {
+    border-radius: 6px;
+    border: 1px solid;
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.alert-success {
+    background-color: #ECFDF5;
+    border-color: var(--frappe-success);
+    color: #065F46;
+}
+
+.alert-danger {
+    background-color: #FEF2F2;
+    border-color: var(--frappe-danger);
+    color: #991B1B;
+}
+
+.alert-info {
+    background-color: #EFF6FF;
+    border-color: var(--frappe-info);
+    color: #1E40AF;
+}
+
+.alert-warning {
+    background-color: #FFFBEB;
+    border-color: var(--frappe-warning);
+    color: #92400E;
+}
+
+/* Headings ERPNext */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--frappe-text);
+}
+
+h1 {
+    font-size: 1.875rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.9375rem;
+}
+
+/* Text colors ERPNext - Complément à Bootstrap */
+.text-muted {
+    color: var(--frappe-text-muted);
+}
+
+/* Links ERPNext */
+a {
+    color: var(--frappe-primary);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--frappe-primary-hover);
+}
+
+/* Footer ERPNext */
+footer {
+    background-color: var(--frappe-white);
+    border-top: 1px solid var(--frappe-border);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    color: var(--frappe-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Utility classes ERPNext */
+.border-left-primary {
+    border-left: 4px solid var(--frappe-primary);
+}
+
+/* Table responsive avec style ERPNext */
+.table-responsive {
+    border-radius: 8px;
+    border: 1px solid var(--frappe-border);
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .table {
+        font-size: 0.8125rem;
+    }
+    
+    .table thead th,
+    .table tbody td {
+        padding: 0.75rem 0.5rem;
+    }
+}

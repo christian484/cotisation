@@ -1,0 +1,872 @@
+{% extends "base.html" %}
+
+{% block title %}Nouveau Devis{% endblock %}
+
+{% block content %}
+<h1>➕ Créer un Nouveau Devis</h1>
+
+<form method="POST" class="mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Informations du Devis</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="client_id" class="form-label">Client *</label>
+                    <select class="form-select" id="client_id" name="client_id" required>
+                        <option value="">Sélectionner un client</option>
+                        {% for client in clients %}
+                        <option value="{{ client.id }}">{{ client.nom }} ({{ client.reference }})</option>
+                        {% endfor %}
+                    </select>
+                    <small class="form-text text-muted">
+                        <a href="{{ url_for('nouveau_client') }}">Créer un nouveau client</a>
+                    </small>
+                </div>
+                <div class="col-md-6">
+                    <label for="reference" class="form-label">Référence du Devis *</label>
+                    <input type="text" class="form-control" id="reference" name="reference" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="date_cotation" class="form-label">Date de Cotation *</label>
+                    <input type="date" class="form-control" id="date_cotation" name="date_cotation" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="taux_change" class="form-label">Taux de Change (Ar/€) *</label>
+                    <input type="number" step="0.01" class="form-control" id="taux_change" 
+                           name="taux_change" value="4420" required>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="marge_percent" class="form-label">Marge (%) *</label>
+                    <select class="form-select" id="marge_percent" name="marge_percent" required>
+                        <option value="14">14%</option>
+                        <option value="16">16%</option>
+                        <option value="18" selected>18%</option>
+                        <option value="20">20%</option>
+                        <option value="22">22%</option>
+                        <option value="24">24%</option>
+                        <option value="25">25%</option>
+                        <option value="28">28%</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr>
+
+            <h6 class="mb-3">Nombre de Personnes</h6>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="nombre_personnes" class="form-label">Total *</label>
+                    <input type="number" class="form-control" id="nombre_personnes" 
+                           name="nombre_personnes" min="1" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="nombre_adultes" class="form-label">Adultes</label>
+                    <input type="number" class="form-control" id="nombre_adultes" 
+                           name="nombre_adultes" min="0" value="0">
+                </div>
+                <div class="col-md-3">
+                    <label for="nombre_enfants" class="form-label">Enfants</label>
+                    <input type="number" class="form-control" id="nombre_enfants" 
+                           name="nombre_enfants" min="0" value="0">
+                </div>
+                <div class="col-md-3">
+                    <label for="nombre_bebes" class="form-label">Bébés</label>
+                    <input type="number" class="form-control" id="nombre_bebes" 
+                           name="nombre_bebes" min="0" value="0">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="nombre_chambres" class="form-label">Nombre de Chambres</label>
+                    <input type="number" class="form-control" id="nombre_chambres" 
+                           name="nombre_chambres" min="0" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section pour ajouter les jours de voyage -->
+    <div class="card mt-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📅 Jours de Voyage (Optionnel - peut être ajouté après)</h5>
+        </div>
+        <div class="card-body">
+            <div id="jours_container">
+                <!-- Les jours seront ajoutés ici dynamiquement -->
+            </div>
+            <button type="button" class="btn btn-outline-success mt-3" onclick="ajouterJour()">
+                ➕ Ajouter un Jour
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Guide Accompagnateur -->
+    <div class="card mt-4">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">👤 Guide Accompagnateur (Optionnel)</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="prix_guide_par_jour" class="form-label">Prix Guide par Jour (Ar)</label>
+                    <input type="number" class="form-control" id="prix_guide_par_jour" 
+                           name="prix_guide_par_jour" min="0" value="0" step="1000"
+                           placeholder="Ex: 280000">
+                    <small class="form-text text-muted">Le prix s'appliquera pour tous les jours de voyage</small>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Prix Total Guide</label>
+                    <div class="form-control-plaintext" id="prix_total_guide">
+                        <strong class="text-warning">0 Ar</strong>
+                    </div>
+                    <small class="form-text text-muted" id="info_jours_guide">Ajoutez des jours de voyage pour calculer le total</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Type de Location (pour tout le devis) -->
+    <div class="card mt-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">🚗 Type de Location Journalière (Optionnel)</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="type_location_id" class="form-label">Type de Location</label>
+                    <select class="form-select" id="type_location_id" name="type_location_id" onchange="calculerPrixLocation()">
+                        <option value="">Pas de location journalière</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Prix Total Location</label>
+                    <div class="form-control-plaintext" id="prix_total_location">
+                        <strong class="text-info">0 Ar</strong>
+                    </div>
+                    <small class="form-text text-muted" id="info_prix_location">Prix/jour × nombre de jours</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Transfert Aéroport (pour tout le devis) -->
+    <div class="card mt-4">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">✈️ Transfert Aéroport (Optionnel)</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">Inclure transfert aéroport ?</label>
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" type="checkbox" id="transfert_aeroport" name="transfert_aeroport" onchange="toggleTransfert()">
+                    </div>
+                </div>
+                <div class="col-md-4" id="transfert_type_container" style="display: none;">
+                    <label for="type_transfert" class="form-label">Type de transfert</label>
+                    <select class="form-select" id="type_transfert" name="type_transfert" onchange="calculerPrixTransfert()">
+                        <option value="Aéroport-Hôtel">Aéroport → Hôtel</option>
+                        <option value="Hôtel-Aéroport">Hôtel → Aéroport</option>
+                        <option value="Aller-Retour">Aller-Retour</option>
+                    </select>
+                </div>
+                <div class="col-md-4" id="transfert_prix_container" style="display: none;">
+                    <label class="form-label">Prix Transfert</label>
+                    <div class="form-control-plaintext" id="prix_transfert">
+                        <strong class="text-danger">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Créer le Devis</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Annuler</a>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script data-itineraires='{{ itineraires | tojson }}'>
+const ITINERAIRES = JSON.parse(document.currentScript.dataset.itineraires);
+let jourCounter = 0;
+let CONFIG_PRIX = {};
+let TYPES_LOCATIONS = [];
+
+// Définir la date du jour par défaut et charger les configurations
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('date_cotation');
+    if (dateInput && !dateInput.value) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+    }
+    
+    // Charger les prix de configuration
+    fetch('/api/config_prix')
+        .then(response => response.json())
+        .then(config => {
+            CONFIG_PRIX = config;
+        });
+    
+    // Charger les types de location journalière
+    fetch('/api/types_locations_journalieres')
+        .then(response => response.json())
+        .then(types => {
+            TYPES_LOCATIONS = types;
+            const select = document.getElementById('type_location_id');
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.id;
+                option.textContent = `${type.nom} - ${type.prix_journalier_sans_carburant.toLocaleString('fr-FR')} Ar/jour`;
+                option.dataset.prix = type.prix_journalier_sans_carburant;
+                select.appendChild(option);
+            });
+        });
+});
+
+// Calculer le prix de location journalière
+function calculerPrixLocation() {
+    const select = document.getElementById('type_location_id');
+    const selectedOption = select.options[select.selectedIndex];
+    const prixDiv = document.getElementById('prix_total_location');
+    const infoDiv = document.getElementById('info_prix_location');
+    const nbJours = document.querySelectorAll('.jour-item').length;
+    
+    if (select.value && selectedOption.dataset.prix) {
+        const prixParJour = parseFloat(selectedOption.dataset.prix);
+        const prixTotal = prixParJour * nbJours;
+        prixDiv.innerHTML = `<strong class="text-info">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+        infoDiv.textContent = `${prixParJour.toLocaleString('fr-FR')} Ar × ${nbJours} jour(s)`;
+    } else {
+        prixDiv.innerHTML = '<strong class="text-info">0 Ar</strong>';
+        infoDiv.textContent = 'Prix/jour × nombre de jours';
+    }
+}
+
+// Toggle affichage transfert aéroport
+function toggleTransfert() {
+    const checkbox = document.getElementById('transfert_aeroport');
+    const typeContainer = document.getElementById('transfert_type_container');
+    const prixContainer = document.getElementById('transfert_prix_container');
+    
+    if (checkbox.checked) {
+        typeContainer.style.display = 'block';
+        prixContainer.style.display = 'block';
+        calculerPrixTransfert();
+    } else {
+        typeContainer.style.display = 'none';
+        prixContainer.style.display = 'none';
+        document.getElementById('prix_transfert').innerHTML = '<strong class="text-danger">0 Ar</strong>';
+    }
+}
+
+// Calculer le prix du transfert aéroport
+function calculerPrixTransfert() {
+    const typeTransfert = document.getElementById('type_transfert').value;
+    const prixDiv = document.getElementById('prix_transfert');
+    const prixParTrajet = CONFIG_PRIX.transfert_aeroport_par_trajet?.valeur || 250000;
+    
+    let nbTrajets = 1;
+    if (typeTransfert === 'Aller-Retour') {
+        nbTrajets = 2;
+    }
+    
+    const prixTotal = prixParTrajet * nbTrajets;
+    prixDiv.innerHTML = `<strong class="text-danger">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+}
+
+// Calculer le prix total du guide accompagnateur
+function calculerPrixGuide() {
+    const prixParJour = parseFloat(document.getElementById('prix_guide_par_jour')?.value) || 0;
+    const nbJours = document.querySelectorAll('.jour-item').length;
+    const prixDiv = document.getElementById('prix_total_guide');
+    const infoDiv = document.getElementById('info_jours_guide');
+    
+    const prixTotal = prixParJour * nbJours;
+    
+    if (prixDiv) {
+        prixDiv.innerHTML = `<strong class="text-warning">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+    }
+    if (infoDiv) {
+        if (nbJours > 0) {
+            infoDiv.textContent = `${prixParJour.toLocaleString('fr-FR')} Ar × ${nbJours} jour(s)`;
+        } else {
+            infoDiv.textContent = 'Ajoutez des jours de voyage pour calculer le total';
+        }
+    }
+}
+
+// Écouter les changements du prix guide par jour
+document.getElementById('prix_guide_par_jour')?.addEventListener('input', calculerPrixGuide);
+
+function ajouterJour() {
+    jourCounter++;
+    const container = document.getElementById('jours_container');
+    
+    const jourDiv = document.createElement('div');
+    jourDiv.className = 'card mb-3 jour-item';
+    jourDiv.id = `jour_${jourCounter}`;
+    jourDiv.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">Jour ${jourCounter}</h6>
+                <button type="button" class="btn btn-sm btn-danger" onclick="supprimerJour(${jourCounter})">🗑️ Supprimer</button>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Numéro du Jour *</label>
+                    <input type="number" class="form-control jour-numero" value="${jourCounter}" min="1" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Date (Jour du mois)</label>
+                    <input type="number" class="form-control jour-date" min="1" max="31" placeholder="Ex: 17">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Itinéraire *</label>
+                    <select class="form-select jour-itineraire" required onchange="chargerHotels(${jourCounter}); chargerTypesVoitures(${jourCounter}); rechargerVisites(${jourCounter})">
+                        <option value="">Sélectionner un itinéraire</option>
+                        ${ITINERAIRES.map(it => `<option value="${it.id}">${it.nom}</option>`).join('')}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Hôtel</label>
+                    <select class="form-select jour-hotel" onchange="calculerPrixJour(${jourCounter})">
+                        <option value="">Sélectionner d'abord un itinéraire</option>
+                    </select>
+                    <small class="form-text text-muted jour-prix-info"></small>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Type Chambre</label>
+                    <select class="form-select jour-type-chambre" onchange="calculerPrixJour(${jourCounter})">
+                        <option value="Double">Double</option>
+                        <option value="Triple">Triple</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Nb Chambres</label>
+                    <input type="number" class="form-control jour-nb-chambres" value="1" min="1" onchange="calculerPrixJour(${jourCounter})">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Transfert (Ar)</label>
+                    <input type="number" class="form-control jour-transfert" value="0" min="0" step="0.01" onchange="calculerPrixJour(${jourCounter})">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label class="form-label">Prix Total</label>
+                    <div class="form-control-plaintext jour-prix-total">
+                        <strong class="text-success">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="mb-0">📍 Visites</h6>
+                <button type="button" class="btn btn-sm btn-outline-primary" onclick="ajouterVisite(${jourCounter})">
+                    ➕ Ajouter une Visite
+                </button>
+            </div>
+            <div class="visites-container-${jourCounter}">
+                <!-- Les visites seront ajoutées ici dynamiquement -->
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <label class="form-label">Total Visites du Jour</label>
+                    <div class="form-control-plaintext jour-prix-visite-total-${jourCounter}">
+                        <strong class="text-info">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <h6 class="mb-3">🚗 Location de Véhicule</h6>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Type de Voiture</label>
+                    <select class="form-select jour-type-voiture" onchange="calculerCarburantJour(${jourCounter})">
+                        <option value="">Sélectionner un type</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Kilométrage (km)</label>
+                    <input type="number" class="form-control jour-kilometrage" value="0" min="0" step="0.01" onchange="calculerCarburantJour(${jourCounter})">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Prix Carburant à la Pompe (Ar/L)</label>
+                    <input type="number" class="form-control jour-prix-pompe" value="0" min="0" step="0.01" onchange="calculerCarburantJour(${jourCounter})">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Consommation (L)</label>
+                    <div class="form-control-plaintext jour-consommation">
+                        <strong>0 L</strong>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Prix Total Carburant</label>
+                    <div class="form-control-plaintext jour-prix-carburant-total">
+                        <strong class="text-warning">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    container.appendChild(jourDiv);
+    
+    // Charger les types de voitures pour ce nouveau jour
+    chargerTypesVoitures(jourCounter);
+    
+    // Recalculer le prix du guide et location
+    calculerPrixGuide();
+    calculerPrixLocation();
+}
+
+function supprimerJour(num) {
+    const jourDiv = document.getElementById(`jour_${num}`);
+    if (jourDiv) {
+        jourDiv.remove();
+        // Recalculer le prix du guide et location
+        calculerPrixGuide();
+        calculerPrixLocation();
+    }
+}
+
+function chargerTypesVoitures(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const typeVoitureSelect = jourDiv.querySelector('.jour-type-voiture');
+    if (!typeVoitureSelect) return;
+    
+    // Si déjà rempli, ne pas recharger
+    if (typeVoitureSelect.options.length > 1) return;
+    
+    fetch('/api/types_voitures')
+        .then(response => response.json())
+        .then(types => {
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.id;
+                option.textContent = `${type.nom} (${type.consommation_l_100km}L/100km)`;
+                option.dataset.consommation = type.consommation_l_100km;
+                typeVoitureSelect.appendChild(option);
+            });
+        });
+}
+
+// Charger les types de voitures au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/api/types_voitures')
+        .then(response => response.json())
+        .then(types => {
+            // Remplir tous les selects de types de voitures existants
+            document.querySelectorAll('.jour-type-voiture').forEach(select => {
+                types.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type.id;
+                    option.textContent = `${type.nom} (${type.consommation_l_100km}L/100km)`;
+                    option.dataset.consommation = type.consommation_l_100km;
+                    select.appendChild(option);
+                });
+            });
+        });
+});
+
+function chargerHotels(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    const itineraireSelect = jourDiv.querySelector('.jour-itineraire');
+    const hotelSelect = jourDiv.querySelector('.jour-hotel');
+    const visiteSelect = jourDiv.querySelector('.jour-visite');
+    const prixInfo = jourDiv.querySelector('.jour-prix-info');
+    
+    const itineraireId = itineraireSelect.value;
+    
+    if (!itineraireId) {
+        hotelSelect.innerHTML = '<option value="">Sélectionner d\'abord un itinéraire</option>';
+        if (visiteSelect) visiteSelect.innerHTML = '<option value="">Sélectionner d\'abord un itinéraire</option>';
+        prixInfo.textContent = '';
+        return;
+    }
+    
+    // Charger les hôtels
+    fetch(`/api/itineraires/${itineraireId}/hotels`)
+        .then(response => response.json())
+        .then(hotels => {
+            hotelSelect.innerHTML = '<option value="">Sélectionner un hôtel</option>';
+            hotels.forEach(hotel => {
+                const option = document.createElement('option');
+                option.value = hotel.id;
+                option.textContent = `${hotel.nom} - ${hotel.prix_double.toLocaleString()} Ar`;
+                option.dataset.prixDouble = hotel.prix_double;
+                option.dataset.prixTriple = hotel.prix_triple || hotel.prix_double;
+                hotelSelect.appendChild(option);
+            });
+            calculerPrixJour(jourNum);
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert('Erreur lors du chargement des hôtels');
+        });
+    
+    // Charger les visites pour tous les conteneurs de visites de ce jour
+    const visitesContainers = jourDiv.querySelectorAll(`.visites-container-${jourNum}`);
+    if (visitesContainers.length > 0) {
+        fetch(`/api/itineraires/${itineraireId}/visites`)
+            .then(response => response.json())
+            .then(visites => {
+                // Stocker les visites disponibles pour ce jour
+                jourDiv.dataset.visitesDisponibles = JSON.stringify(visites);
+                // Recharger toutes les visites existantes
+                rechargerVisites(jourNum);
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+    }
+}
+
+function calculerPrixJour(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    const hotelSelect = jourDiv.querySelector('.jour-hotel');
+    const typeChambre = jourDiv.querySelector('.jour-type-chambre').value;
+    const nbChambres = parseInt(jourDiv.querySelector('.jour-nb-chambres').value) || 0;
+    const transfert = parseFloat(jourDiv.querySelector('.jour-transfert').value) || 0;
+    const prixTotalDiv = jourDiv.querySelector('.jour-prix-total');
+    
+    if (!hotelSelect.value) {
+        prixTotalDiv.innerHTML = '<strong class="text-success">0 Ar</strong>';
+        return;
+    }
+    
+    const selectedOption = hotelSelect.options[hotelSelect.selectedIndex];
+    const prixChambre = typeChambre === 'Triple' 
+        ? parseFloat(selectedOption.dataset.prixTriple) 
+        : parseFloat(selectedOption.dataset.prixDouble);
+    
+    const prixTotal = (prixChambre * nbChambres) + transfert;
+    prixTotalDiv.innerHTML = `<strong class="text-success">${prixTotal.toLocaleString()} Ar</strong>`;
+}
+
+// Ajouter une visite pour un jour donné
+let visiteCounter = {};
+function ajouterVisite(jourNum) {
+    if (!visiteCounter[jourNum]) {
+        visiteCounter[jourNum] = 0;
+    }
+    visiteCounter[jourNum]++;
+    
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const visitesContainer = jourDiv.querySelector(`.visites-container-${jourNum}`);
+    if (!visitesContainer) return;
+    
+    // Récupérer les visites disponibles depuis le dataset ou charger depuis l'API
+    let visitesDisponibles = [];
+    if (jourDiv.dataset.visitesDisponibles) {
+        visitesDisponibles = JSON.parse(jourDiv.dataset.visitesDisponibles);
+    } else {
+        // Si pas encore chargées, charger depuis l'itinéraire sélectionné
+        const itineraireSelect = jourDiv.querySelector('.jour-itineraire');
+        if (itineraireSelect && itineraireSelect.value) {
+            fetch(`/api/itineraires/${itineraireSelect.value}/visites`)
+                .then(response => response.json())
+                .then(visites => {
+                    jourDiv.dataset.visitesDisponibles = JSON.stringify(visites);
+                    ajouterVisite(jourNum); // Réessayer après chargement
+                });
+            return;
+        } else {
+            alert('Veuillez d\'abord sélectionner un itinéraire');
+            return;
+        }
+    }
+    
+    const visiteId = `visite_${jourNum}_${visiteCounter[jourNum]}`;
+    const visiteDiv = document.createElement('div');
+    visiteDiv.className = 'card mb-2 visite-item';
+    visiteDiv.id = visiteId;
+    visiteDiv.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="mb-0 small">Visite</h6>
+                <button type="button" class="btn btn-sm btn-outline-danger" onclick="supprimerVisite('${visiteId}', ${jourNum})">
+                    🗑️ Supprimer
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label class="form-label small">Lieu de Visite</label>
+                    <select class="form-select visite-select" onchange="calculerPrixVisite('${visiteId}', ${jourNum})">
+                        <option value="">Sélectionner une visite</option>
+                        ${visitesDisponibles.map(v => {
+                            const visiteData = JSON.stringify(v);
+                            return `<option value="${v.id}" data-visite='${visiteData.replace(/'/g, "&apos;")}'>${v.nom}</option>`;
+                        }).join('')}
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label small">Nombre de Personnes</label>
+                    <input type="number" class="form-control visite-nb-personnes" value="1" min="1" onchange="calculerPrixVisite('${visiteId}', ${jourNum})">
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label small">Prix Total</label>
+                    <div class="form-control-plaintext visite-prix-total">
+                        <strong class="text-info small">0 Ar</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    visitesContainer.appendChild(visiteDiv);
+}
+
+// Supprimer une visite
+function supprimerVisite(visiteId, jourNum) {
+    const visiteDiv = document.getElementById(visiteId);
+    if (visiteDiv) {
+        visiteDiv.remove();
+        calculerTotalVisitesJour(jourNum);
+    }
+}
+
+// Calculer le prix d'une visite individuelle
+function calculerPrixVisite(visiteId, jourNum) {
+    const visiteDiv = document.getElementById(visiteId);
+    if (!visiteDiv) return;
+    
+    const visiteSelect = visiteDiv.querySelector('.visite-select');
+    const nbPersonnes = parseInt(visiteDiv.querySelector('.visite-nb-personnes')?.value) || 0;
+    const prixTotalDiv = visiteDiv.querySelector('.visite-prix-total');
+    
+    if (!visiteSelect || !visiteSelect.value) {
+        if (prixTotalDiv) prixTotalDiv.innerHTML = '<strong class="text-info small">0 Ar</strong>';
+        calculerTotalVisitesJour(jourNum);
+        return;
+    }
+    
+    const selectedOption = visiteSelect.options[visiteSelect.selectedIndex];
+    if (!selectedOption || !selectedOption.dataset.visite) {
+        if (prixTotalDiv) prixTotalDiv.innerHTML = '<strong class="text-info small">0 Ar</strong>';
+        calculerTotalVisitesJour(jourNum);
+        return;
+    }
+    
+    const visite = JSON.parse(selectedOption.dataset.visite.replace(/&apos;/g, "'"));
+    let prixEntree = 0;
+    
+    // Calculer le prix d'entrée
+    if (visite.type_prix === 'personne') {
+        prixEntree = visite.prix_par_personne * nbPersonnes;
+    } else if (visite.type_prix === 'voiture' || visite.type_prix === 'bateau') {
+        prixEntree = visite.prix_par_voiture;
+    }
+    
+    // Calculer le prix du guidage si obligatoire
+    let prixGuidage = 0;
+    if (visite.guidage_obligatoire && visite.guidage_prix_base > 0) {
+        if (visite.guidage_type_calcul === 'par_personne') {
+            prixGuidage = visite.guidage_prix_base * nbPersonnes;
+        } else if (visite.guidage_type_calcul === 'par_voiture') {
+            prixGuidage = visite.guidage_prix_base;
+        } else { // par_groupe
+            const nbGroupes = Math.ceil(nbPersonnes / visite.guidage_nb_personnes_base);
+            prixGuidage = visite.guidage_prix_base * nbGroupes;
+        }
+    }
+    
+    // Calculer la taxe communale
+    const prixTaxe = visite.taxe_communale * nbPersonnes;
+    
+    const prixTotal = prixEntree + prixGuidage + prixTaxe;
+    if (prixTotalDiv) {
+        prixTotalDiv.innerHTML = `<strong class="text-info small">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+    }
+    
+    calculerTotalVisitesJour(jourNum);
+}
+
+// Calculer le total de toutes les visites d'un jour
+function calculerTotalVisitesJour(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const prixTotalDiv = jourDiv.querySelector(`.jour-prix-visite-total-${jourNum}`);
+    if (!prixTotalDiv) return;
+    
+    let total = 0;
+    jourDiv.querySelectorAll('.visite-item').forEach(visiteDiv => {
+        const prixText = visiteDiv.querySelector('.visite-prix-total')?.textContent || '0 Ar';
+        const prixMatch = prixText.match(/[\d\s,]+/);
+        if (prixMatch) {
+            const prix = parseFloat(prixMatch[0].replace(/\s/g, '').replace(',', '.')) || 0;
+            total += prix;
+        }
+    });
+    
+    prixTotalDiv.innerHTML = `<strong class="text-info">${total.toLocaleString('fr-FR')} Ar</strong>`;
+}
+
+// Recharger toutes les visites après changement d'itinéraire
+function rechargerVisites(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    if (!jourDiv) return;
+    
+    const itineraireSelect = jourDiv.querySelector('.jour-itineraire');
+    if (!itineraireSelect || !itineraireSelect.value) {
+        // Si pas d'itinéraire sélectionné, vider les visites
+        const visitesContainer = jourDiv.querySelector(`.visites-container-${jourNum}`);
+        if (visitesContainer) {
+            visitesContainer.innerHTML = '';
+        }
+        jourDiv.dataset.visitesDisponibles = '[]';
+        calculerTotalVisitesJour(jourNum);
+        return;
+    }
+    
+    // Charger les visites depuis l'API
+    fetch(`/api/itineraires/${itineraireSelect.value}/visites`)
+        .then(response => response.json())
+        .then(visites => {
+            jourDiv.dataset.visitesDisponibles = JSON.stringify(visites);
+            
+            const visitesContainer = jourDiv.querySelector(`.visites-container-${jourNum}`);
+            if (!visitesContainer) return;
+            
+            // Mettre à jour tous les selects de visites existants
+            visitesContainer.querySelectorAll('.visite-select').forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Sélectionner une visite</option>';
+                visites.forEach(visite => {
+                    const option = document.createElement('option');
+                    option.value = visite.id;
+                    option.textContent = visite.nom;
+                    option.dataset.visite = JSON.stringify(visite);
+                    if (option.value === currentValue) {
+                        option.selected = true;
+                    }
+                    select.appendChild(option);
+                });
+                
+                // Recalculer le prix si une visite était sélectionnée
+                if (currentValue) {
+                    const visiteItem = select.closest('.visite-item');
+                    if (visiteItem) {
+                        calculerPrixVisite(visiteItem.id, jourNum);
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors du rechargement des visites:', error);
+        });
+}
+
+function calculerCarburantJour(jourNum) {
+    const jourDiv = document.getElementById(`jour_${jourNum}`);
+    const typeVoitureSelect = jourDiv.querySelector('.jour-type-voiture');
+    const kilometrage = parseFloat(jourDiv.querySelector('.jour-kilometrage')?.value) || 0;
+    const prixPompe = parseFloat(jourDiv.querySelector('.jour-prix-pompe')?.value) || 0;
+    const consommationDiv = jourDiv.querySelector('.jour-consommation');
+    const prixTotalDiv = jourDiv.querySelector('.jour-prix-carburant-total');
+    
+    if (!typeVoitureSelect || !typeVoitureSelect.value) {
+        if (consommationDiv) consommationDiv.innerHTML = '<strong>0 L</strong>';
+        if (prixTotalDiv) prixTotalDiv.innerHTML = '<strong class="text-warning">0 Ar</strong>';
+        return;
+    }
+    
+    const selectedOption = typeVoitureSelect.options[typeVoitureSelect.selectedIndex];
+    if (!selectedOption || !selectedOption.dataset.consommation) {
+        if (consommationDiv) consommationDiv.innerHTML = '<strong>0 L</strong>';
+        if (prixTotalDiv) prixTotalDiv.innerHTML = '<strong class="text-warning">0 Ar</strong>';
+        return;
+    }
+    
+    const consommationL100km = parseFloat(selectedOption.dataset.consommation);
+    
+    // Calcul: (kilometrage * consommation) / 100
+    const consommationTotale = (kilometrage * consommationL100km) / 100;
+    
+    // Prix: consommation * (prix_pompe + 500)
+    const prixTotal = consommationTotale * (prixPompe + 500);
+    
+    if (consommationDiv) consommationDiv.innerHTML = `<strong>${consommationTotale.toFixed(2)} L</strong>`;
+    if (prixTotalDiv) prixTotalDiv.innerHTML = `<strong class="text-warning">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+}
+
+// Modifier la soumission du formulaire pour inclure les jours
+document.querySelector('form').addEventListener('submit', function(e) {
+    const jours = [];
+    document.querySelectorAll('.jour-item').forEach(jourDiv => {
+        const numero = jourDiv.querySelector('.jour-numero').value;
+        const date = jourDiv.querySelector('.jour-date').value;
+        const itineraire = jourDiv.querySelector('.jour-itineraire').value;
+        const hotel = jourDiv.querySelector('.jour-hotel').value;
+        const typeChambre = jourDiv.querySelector('.jour-type-chambre').value;
+        const nbChambres = jourDiv.querySelector('.jour-nb-chambres').value;
+        const transfert = jourDiv.querySelector('.jour-transfert').value;
+        
+        // Récupérer les données de toutes les visites
+        const visites = [];
+        jourDiv.querySelectorAll('.visite-item').forEach(visiteDiv => {
+            const visiteSelect = visiteDiv.querySelector('.visite-select');
+            const visiteId = visiteSelect ? visiteSelect.value : null;
+            const nbPersonnesVisite = visiteDiv.querySelector('.visite-nb-personnes')?.value || 1;
+            if (visiteId) {
+                visites.push({
+                    visite_id: visiteId,
+                    nb_personnes: nbPersonnesVisite
+                });
+            }
+        });
+        
+        // Récupérer les données de location/carburant
+        const typeVoitureSelect = jourDiv.querySelector('.jour-type-voiture');
+        const typeVoitureId = typeVoitureSelect ? typeVoitureSelect.value : null;
+        const kilometrage = jourDiv.querySelector('.jour-kilometrage')?.value || 0;
+        const prixCarburantPompe = jourDiv.querySelector('.jour-prix-pompe')?.value || 0;
+        
+        if (numero && itineraire) {
+            jours.push(JSON.stringify({
+                numero_jour: numero,
+                date_jour: date || null,
+                itineraire_id: itineraire,
+                hotel_id: hotel || null,
+                type_chambre: typeChambre,
+                nombre_chambres: nbChambres,
+                transfert_htl: transfert || 0,
+                // Données de visites (tableau)
+                visites: visites,
+                // Données de location/carburant
+                type_voiture_id: typeVoitureId || null,
+                kilometrage: kilometrage,
+                prix_carburant_pompe: prixCarburantPompe
+            }));
+        }
+    });
+    
+    // Ajouter les jours comme champs cachés
+    jours.forEach((jourJson, index) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'jours[]';
+        input.value = jourJson;
+        this.appendChild(input);
+    });
+});
+</script>
+{% endblock %}
+

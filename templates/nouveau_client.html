@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Nouveau Client{% endblock %}
+
+{% block content %}
+<h1>➕ Créer un Nouveau Client</h1>
+
+<form method="POST" class="mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Informations du Client</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="reference" class="form-label">Référence *</label>
+                    <input type="text" class="form-control" id="reference" name="reference" required>
+                    <small class="form-text text-muted">Identifiant unique du client</small>
+                </div>
+                <div class="col-md-6">
+                    <label for="nom" class="form-label">Nom *</label>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="col-md-6">
+                    <label for="telephone" class="form-label">Téléphone</label>
+                    <input type="tel" class="form-control" id="telephone" name="telephone">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Créer le Client</button>
+        <a href="{{ url_for('liste_clients') }}" class="btn btn-secondary">Annuler</a>
+    </div>
+</form>
+{% endblock %}
+

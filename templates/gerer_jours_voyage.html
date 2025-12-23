@@ -1,0 +1,719 @@
+{% extends "base.html" %} {% block title %}Gérer les Jours de Voyage - Devis {{
+devis.reference }}{% endblock %} {% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>📅 Gérer les Jours de Voyage</h1>
+  <div>
+    <a
+      href="{{ url_for('voir_devis', devis_id=devis.id) }}"
+      class="btn btn-secondary"
+      >← Retour au Devis</a
+    >
+    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary"
+      >Liste des Devis</a
+    >
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header bg-info text-white">
+    <h5 class="mb-0">Informations du Devis</h5>
+  </div>
+  <div class="card-body">
+    <p><strong>Référence:</strong> {{ devis.reference }}</p>
+    <p><strong>Client:</strong> {{ devis.client_nom }}</p>
+    <p><strong>Nombre de personnes:</strong> {{ devis.nombre_personnes }}</p>
+  </div>
+</div>
+
+<!-- Formulaire pour ajouter un jour -->
+<div class="card mb-4">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">➕ Ajouter un Jour de Voyage</h5>
+  </div>
+  <div class="card-body">
+    <form id="formJourVoyage">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label for="numero_jour" class="form-label">Numéro du Jour *</label>
+          <input
+            type="number"
+            class="form-control"
+            id="numero_jour"
+            name="numero_jour"
+            min="1"
+            required
+          />
+          <small class="form-text text-muted"
+            >Ex: 1 = 1er jour, 2 = 2ème jour</small
+          >
+        </div>
+        <div class="col-md-3">
+          <label for="date_jour" class="form-label">Date (Jour du mois)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="date_jour"
+            name="date_jour"
+            min="1"
+            max="31"
+          />
+          <small class="form-text text-muted">Ex: 17, 18, 19...</small>
+        </div>
+        <div class="col-md-6">
+          <label for="itineraire_id" class="form-label">Itinéraire *</label>
+          <select
+            class="form-select"
+            id="itineraire_id"
+            name="itineraire_id"
+            required
+          >
+            <option value="">Sélectionner un itinéraire</option>
+            {% for itineraire in itineraires %}
+            <option value="{{ itineraire.id }}">{{ itineraire.nom }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="hotel_id" class="form-label">Hôtel</label>
+          <select class="form-select" id="hotel_id" name="hotel_id">
+            <option value="">Sélectionner d'abord un itinéraire</option>
+          </select>
+          <small class="form-text text-muted" id="prix_hotel_info"></small>
+        </div>
+        <div class="col-md-3">
+          <label for="type_chambre" class="form-label">Type de Chambre</label>
+          <select class="form-select" id="type_chambre" name="type_chambre">
+            <option value="Double">Double (1 chambre pour 2 personnes)</option>
+            <option value="Triple">Triple (1 chambre pour 3 personnes)</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="nombre_chambres" class="form-label"
+            >Nombre de Chambres</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="nombre_chambres"
+            name="nombre_chambres"
+            min="1"
+            value="1"
+          />
+          <small class="form-text text-muted"
+            >Nombre de chambres (pas de personnes)</small
+          >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="transfert_htl" class="form-label"
+            >Transfert Hôtel (Ariary)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="transfert_htl"
+            name="transfert_htl"
+            min="0"
+            value="0"
+            step="0.01"
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Prix Total Hébergement</label>
+          <div class="form-control-plaintext" id="prix_total_hebergement">
+            <strong class="text-success">0 Ar</strong>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4" />
+
+      <h6 class="mb-3">📍 Visites</h6>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="visite_id" class="form-label">Lieu de Visite</label>
+          <select class="form-select" id="visite_id" name="visite_id">
+            <option value="">Sélectionner d'abord un itinéraire</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="nb_personnes_visite" class="form-label"
+            >Nombre de Personnes</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="nb_personnes_visite"
+            name="nb_personnes_visite"
+            min="1"
+            value="1"
+          />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Prix Total Visite</label>
+          <div class="form-control-plaintext" id="prix_total_visite">
+            <strong class="text-info">0 Ar</strong>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4" />
+
+      <h6 class="mb-3">🚗 Location de Véhicule</h6>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="type_voiture_id" class="form-label"
+            >Type de Voiture</label
+          >
+          <select
+            class="form-select"
+            id="type_voiture_id"
+            name="type_voiture_id"
+          >
+            <option value="">Sélectionner un type</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="kilometrage" class="form-label">Kilométrage (km)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="kilometrage"
+            name="kilometrage"
+            min="0"
+            value="0"
+            step="0.01"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="prix_carburant_pompe" class="form-label"
+            >Prix Carburant à la Pompe (Ar/L)</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="prix_carburant_pompe"
+            name="prix_carburant_pompe"
+            min="0"
+            value="0"
+            step="0.01"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Consommation (L)</label>
+          <div class="form-control-plaintext" id="consommation_carburant">
+            <strong>0 L</strong>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Prix Total Carburant</label>
+          <div class="form-control-plaintext" id="prix_total_carburant">
+            <strong class="text-warning">0 Ar</strong>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Ajouter le Jour</button>
+    </form>
+  </div>
+</div>
+
+<!-- Liste des jours existants -->
+<div class="card">
+  <div class="card-header bg-success text-white">
+    <h5 class="mb-0">📋 Jours de Voyage Configurés</h5>
+  </div>
+  <div class="card-body">
+    {% if jours %}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Jour</th>
+            <th>Date</th>
+            <th>Itinéraire</th>
+            <th>Hôtel</th>
+            <th>Type</th>
+            <th>Chambres</th>
+            <th>Prix Hébergement</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="jours_liste">
+          {% for jour in jours %}
+          <tr data-jour-id="{{ jour.id }}">
+            <td><strong>Jour {{ jour.numero_jour }}</strong></td>
+            <td>{{ jour.date_jour or '-' }}</td>
+            <td>{{ jour.itineraire_nom or '-' }}</td>
+            <td>{{ jour.hotel_nom or '-' }}</td>
+            <td>{{ jour.type_chambre or '-' }}</td>
+            <td>{{ jour.nombre_chambres or '-' }}</td>
+            <td>
+              {% if jour.prix_hebergement %}
+              <strong class="text-success"
+                >{{ "{:,.0f}".format(jour.prix_hebergement) }} Ar</strong
+              >
+              {% if jour.transfert_htl %}
+              <br /><small class="text-muted"
+                >+ Transfert: {{ "{:,.0f}".format(jour.transfert_htl) }}
+                Ar</small
+              >
+              {% endif %} {% else %}
+              <span class="text-muted">-</span>
+              {% endif %}
+            </td>
+            <td>
+              <button
+                class="btn btn-sm btn-danger"
+                data-jour-id="{{ jour.id }}"
+                onclick="supprimerJour(this.dataset.jourId)"
+              >
+                🗑️
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+      <p class="mb-0">
+        Aucun jour de voyage configuré. Utilisez le formulaire ci-dessus pour
+        ajouter des jours.
+      </p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script data-devis-id="{{ devis.id }}">
+  const DEVIS_ID = parseInt(document.currentScript.dataset.devisId);
+
+  // Variables pour stocker les prix de configuration
+  let CONFIG_PRIX = {};
+  let TYPES_LOCATIONS = [];
+
+  // Charger les types de voitures et les configurations au chargement de la page
+  document.addEventListener('DOMContentLoaded', function() {
+      // Charger les types de voitures
+      fetch('/api/types_voitures')
+          .then(response => response.json())
+          .then(types => {
+              const select = document.getElementById('type_voiture_id');
+              types.forEach(type => {
+                  const option = document.createElement('option');
+                  option.value = type.id;
+                  option.textContent = `${type.nom} (${type.consommation_l_100km}L/100km)`;
+                  option.dataset.consommation = type.consommation_l_100km;
+                  select.appendChild(option);
+              });
+          });
+      
+      // Charger les types de locations journalières
+      fetch('/api/types_locations_journalieres')
+          .then(response => response.json())
+          .then(types => {
+              TYPES_LOCATIONS = types;
+              const select = document.getElementById('type_location_id');
+              types.forEach(type => {
+                  const option = document.createElement('option');
+                  option.value = type.id;
+                  option.textContent = `${type.nom} - ${type.prix_journalier_sans_carburant.toLocaleString('fr-FR')} Ar/jour`;
+                  option.dataset.prix = type.prix_journalier_sans_carburant;
+                  select.appendChild(option);
+              });
+          });
+      
+      // Charger les prix de configuration
+      fetch('/api/config_prix')
+          .then(response => response.json())
+          .then(config => {
+              CONFIG_PRIX = config;
+          });
+  });
+  
+  // Gérer le changement de type de location journalière
+  document.getElementById('type_location_id').addEventListener('change', function() {
+      const selectedOption = this.options[this.selectedIndex];
+      const prixDiv = document.getElementById('prix_location_jour');
+      
+      if (this.value && selectedOption.dataset.prix) {
+          const prix = parseFloat(selectedOption.dataset.prix);
+          prixDiv.innerHTML = `<strong class="text-primary">${prix.toLocaleString('fr-FR')} Ar</strong>`;
+      } else {
+          prixDiv.innerHTML = '<strong class="text-primary">0 Ar</strong>';
+      }
+  });
+  
+  // Gérer le toggle transfert aéroport
+  document.getElementById('transfert_aeroport').addEventListener('change', function() {
+      const typeContainer = document.getElementById('transfert_aeroport_type_container');
+      const prixContainer = document.getElementById('transfert_aeroport_prix_container');
+      const prixDiv = document.getElementById('prix_transfert_aeroport');
+      
+      if (this.checked) {
+          typeContainer.style.display = 'block';
+          prixContainer.style.display = 'block';
+          // Calculer le prix selon le type
+          calculerPrixTransfert();
+      } else {
+          typeContainer.style.display = 'none';
+          prixContainer.style.display = 'none';
+          prixDiv.innerHTML = '<strong class="text-danger">0 Ar</strong>';
+      }
+  });
+  
+  // Calculer le prix du transfert selon le type
+  document.getElementById('type_transfert').addEventListener('change', calculerPrixTransfert);
+  
+  function calculerPrixTransfert() {
+      const typeTransfert = document.getElementById('type_transfert').value;
+      const prixDiv = document.getElementById('prix_transfert_aeroport');
+      const prixParTrajet = CONFIG_PRIX.transfert_aeroport_par_trajet?.valeur || 250000;
+      
+      let nbTrajets = 1;
+      if (typeTransfert === 'Aller-Retour') {
+          nbTrajets = 2;
+      }
+      
+      const prixTotal = prixParTrajet * nbTrajets;
+      prixDiv.innerHTML = `<strong class="text-danger">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+  }
+
+  // Charger les hôtels et visites quand un itinéraire est sélectionné
+  document.getElementById('itineraire_id').addEventListener('change', function() {
+      const itineraireId = this.value;
+      const hotelSelect = document.getElementById('hotel_id');
+      const visiteSelect = document.getElementById('visite_id');
+      const prixInfo = document.getElementById('prix_hotel_info');
+
+      if (!itineraireId) {
+          hotelSelect.innerHTML = '<option value="">Sélectionner d\'abord un itinéraire</option>';
+          if (visiteSelect) visiteSelect.innerHTML = '<option value="">Sélectionner d\'abord un itinéraire</option>';
+          prixInfo.textContent = '';
+          return;
+      }
+
+      // Charger les hôtels
+      fetch(`/api/itineraires/${itineraireId}/hotels`)
+          .then(response => response.json())
+          .then(hotels => {
+              hotelSelect.innerHTML = '<option value="">Sélectionner un hôtel</option>';
+              hotels.forEach(hotel => {
+                  const option = document.createElement('option');
+                  option.value = hotel.id;
+                  option.textContent = `${hotel.nom} - ${hotel.prix_double.toLocaleString()} Ar (Double)`;
+                  option.dataset.prixDouble = hotel.prix_double;
+                  option.dataset.prixTriple = hotel.prix_triple || hotel.prix_double;
+                  hotelSelect.appendChild(option);
+              });
+              prixInfo.textContent = '';
+          })
+          .catch(error => {
+              console.error('Erreur:', error);
+              alert('Erreur lors du chargement des hôtels');
+          });
+
+      // Charger les visites
+      if (visiteSelect) {
+          fetch(`/api/itineraires/${itineraireId}/visites`)
+              .then(response => response.json())
+              .then(visites => {
+                  visiteSelect.innerHTML = '<option value="">Sélectionner une visite</option>';
+                  visites.forEach(visite => {
+                      const option = document.createElement('option');
+                      option.value = visite.id;
+                      option.textContent = visite.nom;
+                      option.dataset.visite = JSON.stringify(visite);
+                      visiteSelect.appendChild(option);
+                  });
+              })
+              .catch(error => {
+                  console.error('Erreur:', error);
+              });
+      }
+  });
+
+  // Calculer le prix total quand les champs changent
+  function calculerPrixTotal() {
+      const hotelSelect = document.getElementById('hotel_id');
+      const typeChambre = document.getElementById('type_chambre').value;
+      const nombreChambres = parseInt(document.getElementById('nombre_chambres').value) || 0;
+      const transfertHtl = parseFloat(document.getElementById('transfert_htl').value) || 0;
+      const prixTotalDiv = document.getElementById('prix_total_hebergement');
+
+      if (!hotelSelect.value) {
+          prixTotalDiv.innerHTML = '<strong class="text-success">0 Ar</strong>';
+          return;
+      }
+
+      const selectedOption = hotelSelect.options[hotelSelect.selectedIndex];
+      const prixChambre = typeChambre === 'Triple'
+          ? parseFloat(selectedOption.dataset.prixTriple)
+          : parseFloat(selectedOption.dataset.prixDouble);
+
+      const prixTotal = (prixChambre * nombreChambres) + transfertHtl;
+      prixTotalDiv.innerHTML = `<strong class="text-success">${prixTotal.toLocaleString()} Ar</strong>`;
+  }
+
+  document.getElementById('hotel_id').addEventListener('change', calculerPrixTotal);
+  document.getElementById('type_chambre').addEventListener('change', calculerPrixTotal);
+  document.getElementById('nombre_chambres').addEventListener('input', calculerPrixTotal);
+  document.getElementById('transfert_htl').addEventListener('input', calculerPrixTotal);
+
+  // Calculer le prix total de la visite
+  function calculerPrixVisite() {
+      const visiteSelect = document.getElementById('visite_id');
+      const nbPersonnes = parseInt(document.getElementById('nb_personnes_visite')?.value) || 0;
+      const prixTotalDiv = document.getElementById('prix_total_visite');
+
+      if (!visiteSelect || !prixTotalDiv) return;
+
+      const selectedOption = visiteSelect.options[visiteSelect.selectedIndex];
+      if (!selectedOption || !selectedOption.dataset.visite) {
+          prixTotalDiv.innerHTML = '<strong class="text-info">0 Ar</strong>';
+          return;
+      }
+
+      const visite = JSON.parse(selectedOption.dataset.visite);
+      let prixEntree = 0;
+
+      // Calculer le prix d'entrée
+      if (visite.type_prix === 'personne') {
+          prixEntree = visite.prix_par_personne * nbPersonnes;
+      } else if (visite.type_prix === 'voiture' || visite.type_prix === 'bateau') {
+          prixEntree = visite.prix_par_voiture;
+      }
+
+      // Calculer le prix du guidage si obligatoire
+      let prixGuidage = 0;
+      if (visite.guidage_obligatoire && visite.guidage_prix_base > 0) {
+          if (visite.guidage_type_calcul === 'par_personne') {
+              prixGuidage = visite.guidage_prix_base * nbPersonnes;
+          } else if (visite.guidage_type_calcul === 'par_voiture') {
+              prixGuidage = visite.guidage_prix_base;
+          } else { // par_groupe
+              const nbGroupes = Math.ceil(nbPersonnes / visite.guidage_nb_personnes_base);
+              prixGuidage = visite.guidage_prix_base * nbGroupes;
+          }
+      }
+
+      // Calculer la taxe communale
+      const prixTaxe = visite.taxe_communale * nbPersonnes;
+
+      const prixTotal = prixEntree + prixGuidage + prixTaxe;
+      prixTotalDiv.innerHTML = `<strong class="text-info">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+  }
+
+  // Calculer la consommation et le prix du carburant
+  function calculerCarburant() {
+      const typeVoitureSelect = document.getElementById('type_voiture_id');
+      const kilometrage = parseFloat(document.getElementById('kilometrage')?.value) || 0;
+      const prixPompe = parseFloat(document.getElementById('prix_carburant_pompe')?.value) || 0;
+      const consommationDiv = document.getElementById('consommation_carburant');
+      const prixTotalDiv = document.getElementById('prix_total_carburant');
+
+      if (!typeVoitureSelect || !consommationDiv || !prixTotalDiv) return;
+
+      const selectedOption = typeVoitureSelect.options[typeVoitureSelect.selectedIndex];
+      if (!selectedOption || !selectedOption.dataset.consommation) {
+          consommationDiv.innerHTML = '<strong>0 L</strong>';
+          prixTotalDiv.innerHTML = '<strong class="text-warning">0 Ar</strong>';
+          return;
+      }
+
+      const consommationL100km = parseFloat(selectedOption.dataset.consommation);
+
+      // Calcul: (kilometrage * consommation) / 100
+      const consommationTotale = (kilometrage * consommationL100km) / 100;
+
+      // Prix: consommation * (prix_pompe + 500)
+      const prixTotal = consommationTotale * (prixPompe + 500);
+
+      consommationDiv.innerHTML = `<strong>${consommationTotale.toFixed(2)} L</strong>`;
+      prixTotalDiv.innerHTML = `<strong class="text-warning">${prixTotal.toLocaleString('fr-FR')} Ar</strong>`;
+  }
+
+  // Écouter les changements pour calculer automatiquement
+  if (document.getElementById('visite_id')) {
+      document.getElementById('visite_id').addEventListener('change', calculerPrixVisite);
+      document.getElementById('nb_personnes_visite')?.addEventListener('input', calculerPrixVisite);
+  }
+  if (document.getElementById('type_voiture_id')) {
+      document.getElementById('type_voiture_id').addEventListener('change', calculerCarburant);
+      document.getElementById('kilometrage')?.addEventListener('input', calculerCarburant);
+      document.getElementById('prix_carburant_pompe')?.addEventListener('input', calculerCarburant);
+  }
+
+  // Soumettre le formulaire
+  document.getElementById('formJourVoyage').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = {
+          numero_jour: parseInt(document.getElementById('numero_jour').value),
+          date_jour: parseInt(document.getElementById('date_jour').value) || null,
+          itineraire_id: parseInt(document.getElementById('itineraire_id').value),
+          hotel_id: parseInt(document.getElementById('hotel_id').value) || null,
+          type_chambre: document.getElementById('type_chambre').value,
+          nombre_chambres: parseInt(document.getElementById('nombre_chambres').value),
+          transfert_htl: parseFloat(document.getElementById('transfert_htl').value) || 0
+      };
+
+      // Récupérer les données de visite
+      const visiteId = parseInt(document.getElementById('visite_id')?.value) || null;
+      const nbPersonnesVisite = parseInt(document.getElementById('nb_personnes_visite')?.value) || 1;
+
+      // Récupérer les données de location/carburant
+      const typeVoitureId = parseInt(document.getElementById('type_voiture_id')?.value) || null;
+      const kilometrage = parseFloat(document.getElementById('kilometrage')?.value) || 0;
+      const prixCarburantPompe = parseFloat(document.getElementById('prix_carburant_pompe')?.value) || 0;
+
+      try {
+          // 1. Créer le jour de voyage
+          const jourResponse = await fetch(`/api/devis/${DEVIS_ID}/jours`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                  numero_jour: formData.numero_jour,
+                  date_jour: formData.date_jour,
+                  itineraire_id: formData.itineraire_id
+              })
+          });
+          const jourData = await jourResponse.json();
+
+          if (jourData.error) {
+              alert('Erreur: ' + jourData.error);
+              return;
+          }
+
+          const jourId = jourData.jour_id;
+          let hasErrors = false;
+
+          // 2. Ajouter l'hébergement si un hôtel est sélectionné
+          if (formData.hotel_id) {
+              const hebergementResponse = await fetch(`/api/devis/${DEVIS_ID}/jours/${jourId}/hebergement`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      hotel_id: formData.hotel_id,
+                      type_chambre: formData.type_chambre,
+                      nombre_chambres: formData.nombre_chambres,
+                      transfert_htl: formData.transfert_htl
+                  })
+              });
+              const hebergementData = await hebergementResponse.json();
+              if (hebergementData.error) {
+                  console.error('Erreur hébergement:', hebergementData.error);
+                  hasErrors = true;
+              }
+          }
+
+          // 3. Ajouter la visite si sélectionnée
+          if (visiteId) {
+              const visiteResponse = await fetch(`/api/devis/${DEVIS_ID}/jours/${jourId}/visite`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      visite_id: visiteId,
+                      nombre_personnes: nbPersonnesVisite
+                  })
+              });
+              const visiteData = await visiteResponse.json();
+              if (visiteData.error) {
+                  console.error('Erreur visite:', visiteData.error);
+                  hasErrors = true;
+              }
+          }
+
+          // 4. Ajouter la location de véhicule si configurée
+          if (typeVoitureId && kilometrage > 0) {
+              // Récupérer aussi le type de location journalière
+              const typeLocationId = parseInt(document.getElementById('type_location_id')?.value) || null;
+              
+              const locationResponse = await fetch(`/api/devis/${DEVIS_ID}/jours/${jourId}/location`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      type_voiture_id: typeVoitureId,
+                      kilometrage: kilometrage,
+                      prix_carburant_pompe: prixCarburantPompe,
+                      prix_location: 0,
+                      nombre_vehicules: 1
+                  })
+              });
+              const locationData = await locationResponse.json();
+              if (locationData.error) {
+                  console.error('Erreur location:', locationData.error);
+                  hasErrors = true;
+              }
+              
+              // 4b. Ajouter la location journalière (4x4/Bus) si sélectionnée
+              if (typeLocationId) {
+                  const locationJournaliereResponse = await fetch(`/api/devis/${DEVIS_ID}/jours/${jourId}/location_journaliere`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                          type_location_id: typeLocationId,
+                          avec_carburant: false
+                      })
+                  });
+                  const locationJournaliereData = await locationJournaliereResponse.json();
+                  if (locationJournaliereData.error) {
+                      console.error('Erreur location journalière:', locationJournaliereData.error);
+                      hasErrors = true;
+                  }
+              }
+          }
+          
+          // 5. Ajouter le transfert aéroport si sélectionné
+          const transfertAeroport = document.getElementById('transfert_aeroport')?.checked;
+          if (transfertAeroport) {
+              const typeTransfert = document.getElementById('type_transfert').value;
+              const nbTrajets = typeTransfert === 'Aller-Retour' ? 2 : 1;
+              
+              const transfertResponse = await fetch(`/api/devis/${DEVIS_ID}/transfert_aeroport`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      type_transfert: typeTransfert,
+                      nombre_trajets: nbTrajets
+                  })
+              });
+              const transfertData = await transfertResponse.json();
+              if (transfertData.error) {
+                  console.error('Erreur transfert aéroport:', transfertData.error);
+                  hasErrors = true;
+              }
+          }
+
+          if (hasErrors) {
+              alert('Jour ajouté avec quelques avertissements. Vérifiez la console pour les détails.');
+          } else {
+              alert('Jour ajouté avec succès!');
+          }
+          location.reload();
+
+      } catch (error) {
+          console.error('Erreur:', error);
+          alert('Erreur lors de l\'ajout du jour');
+      }
+  });
+
+  function supprimerJour(jourId) {
+      if (!confirm('Êtes-vous sûr de vouloir supprimer ce jour?')) {
+          return;
+      }
+
+      // TODO: Implémenter la suppression
+      alert('Fonctionnalité de suppression à implémenter');
+  }
+</script>
+{% endblock %}

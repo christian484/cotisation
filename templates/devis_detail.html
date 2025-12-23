@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block title %}Devis {{ devis.reference }} - Détails{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📄 Devis: {{ devis.reference }}</h1>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">← Retour</a>
+</div>
+
+<!-- Informations générales -->
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Informations Générales</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Client:</strong> {{ devis.client_nom or 'N/A' }}</p>
+                <p><strong>Référence Client:</strong> {{ devis.client_ref or 'N/A' }}</p>
+                <p><strong>Date de Cotation:</strong> {{ devis.date_cotation.strftime('%d/%m/%Y') if devis.date_cotation else 'N/A' }}</p>
+                <p><strong>Nombre de Personnes:</strong> {{ devis.nombre_personnes }}</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Adultes:</strong> {{ devis.nombre_adultes }}</p>
+                <p><strong>Enfants:</strong> {{ devis.nombre_enfants }}</p>
+                <p><strong>Bébés:</strong> {{ devis.nombre_bebes }}</p>
+                <p><strong>Chambres:</strong> {{ devis.nombre_chambres }}</p>
+                <p><strong>Taux de Change:</strong> {{ "{:,.2f}".format(devis.taux_change) }} Ar/€</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Totaux -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center border-success">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Total en Ariary</h6>
+                <h3 class="text-success">{{ "{:,.0f}".format(devis.total_ariary) if devis.total_ariary else "0" }} Ar</h3>
+                {% if devis.marge_percent %}
+                <small class="text-muted">Marge: {{ "{:.0f}".format(devis.marge_percent) }}%</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center border-primary">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Total en Euro</h6>
+                <h3 class="text-primary">{{ "{:,.2f}".format(devis.total_euro) if devis.total_euro else "0.00" }} €</h3>
+                <small class="text-muted">Taux: {{ "{:,.2f}".format(devis.taux_change) }} Ar/€</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center border-warning">
+            <div class="card-body">
+                <h6 class="card-title text-muted">Marge</h6>
+                <h3 class="text-warning">{{ "{:,.0f}".format(devis.marge) if devis.marge else "0" }} Ar</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Coûts par catégorie -->
+{% if couts %}
+<div class="card mb-4">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Coûts par Catégorie</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Catégorie</th>
+                        <th class="text-end">Montant (Ariary)</th>
+                        <th class="text-end">Montant (Euro)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cout in couts %}
+                    <tr>
+                        <td>{{ cout.nom }}</td>
+                        <td class="text-end">{{ "{:,.0f}".format(cout.montant_ariary) if cout.montant_ariary else "0" }} Ar</td>
+                        <td class="text-end">{{ "{:,.2f}".format(cout.montant_euro) if cout.montant_euro else "0.00" }} €</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Transfert Aéroport et Guide Accompagnateur -->
+{% if transferts_aeroport or guides_accompagnateurs %}
+<div class="row mb-4">
+    {% if transferts_aeroport %}
+    <div class="col-md-6">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h6 class="mb-0">✈️ Transfert Aéroport</h6>
+            </div>
+            <div class="card-body">
+                {% for t in transferts_aeroport %}
+                <p class="mb-1">
+                    <strong>{{ t.type_transfert }}</strong> - {{ t.nombre_trajets }} trajet(s)
+                    <br><span class="text-danger fs-5">{{ "{:,.0f}".format(t.prix_total) }} Ar</span>
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if guides_accompagnateurs %}
+    <div class="col-md-6">
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h6 class="mb-0">👤 Guide Accompagnateur</h6>
+            </div>
+            <div class="card-body">
+                {% for g in guides_accompagnateurs %}
+                <p class="mb-1">
+                    {{ g.nombre_guides }} guide(s) × {{ g.nombre_jours }} jour(s) 
+                    @ {{ "{:,.0f}".format(g.prix_par_jour) }} Ar/jour
+                    <br><span class="text-warning fs-5">{{ "{:,.0f}".format(g.prix_total) }} Ar</span>
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+<!-- Itinéraire jour par jour -->
+{% if jours_details %}
+<div class="card mb-4">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Itinéraire Détaillé</h5>
+    </div>
+    <div class="card-body">
+        {% for jour_detail in jours_details %}
+        <div class="card mb-3 border-left-primary">
+            <div class="card-header bg-light">
+                <h6 class="mb-0">
+                    Jour {{ jour_detail.jour.numero_jour }} - 
+                    {% if jour_detail.jour.date_jour %}Date: {{ jour_detail.jour.date_jour }}{% endif %}
+                    {% if jour_detail.jour.destination %} - {{ jour_detail.jour.destination }}{% endif %}
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info mb-3">
+                    <strong>💰 Total du Jour:</strong> 
+                    <span class="fs-5 text-primary">{{ "{:,.0f}".format(jour_detail.total_jour) }} Ar</span>
+                    <small class="text-muted ms-2">
+                        (Hébergement: {{ "{:,.0f}".format(jour_detail.total_hebergement_jour) }} Ar
+                        | Visites: {{ "{:,.0f}".format(jour_detail.total_visites_jour) }} Ar
+                        | Carburant: {{ "{:,.0f}".format(jour_detail.total_carburant_jour) }} Ar
+                        | Locations: {{ "{:,.0f}".format(jour_detail.total_locations_jour + jour_detail.total_locations_journalieres_jour) }} Ar)
+                    </small>
+                </div>
+                
+                {% if jour_detail.transferts %}
+                <h6 class="text-muted">Transferts:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for t in jour_detail.transferts %}
+                    <li>• {{ t.type_transfert }}: 
+                        {% if t.nombre_personnes %}{{ t.nombre_personnes }} pers.{% endif %}
+                        {% if t.prix_ariary %} - {{ "{:,.0f}".format(t.prix_ariary) }} Ar{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+
+                {% if jour_detail.hebergements %}
+                <h6 class="text-muted mt-2">Hébergements:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for h in jour_detail.hebergements %}
+                    <li>• {{ h.hotel_nom or h.nom_hotel or 'N/A' }} ({{ h.type_chambre }}): 
+                        {% if h.nombre_chambres %}{{ h.nombre_chambres }} chambre(s){% endif %}
+                        {% if h.prix_ariary %} - {{ "{:,.0f}".format(h.prix_ariary) }} Ar{% endif %}
+                        {% if h.transfert_htl %} - Transfert: {{ "{:,.0f}".format(h.transfert_htl) }} Ar{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if jour_detail.visites %}
+                <h6 class="text-muted mt-2">📍 Visites:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for v in jour_detail.visites %}
+                    <li>• <strong>{{ v.visite_nom or 'N/A' }}</strong>
+                        {% if v.nombre_personnes %} - {{ v.nombre_personnes }} pers.{% endif %}
+                        <ul class="list-unstyled ms-3 mt-1">
+                            {% if v.prix_entree and v.prix_entree > 0 %}
+                            <li class="text-muted small">→ Entrée: {{ "{:,.0f}".format(v.prix_entree) }} Ar</li>
+                            {% endif %}
+                            {% if v.prix_guidage and v.prix_guidage > 0 %}
+                            <li class="text-primary small">→ Guidage: {{ "{:,.0f}".format(v.prix_guidage) }} Ar</li>
+                            {% endif %}
+                            {% if v.prix_taxe_communale and v.prix_taxe_communale > 0 %}
+                            <li class="text-secondary small">→ Taxe communale: {{ "{:,.0f}".format(v.prix_taxe_communale) }} Ar</li>
+                            {% endif %}
+                            {% if v.prix_total %}
+                            <li class="mt-1"><strong class="text-info">Total: {{ "{:,.0f}".format(v.prix_total) }} Ar</strong></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if jour_detail.locations %}
+                <h6 class="text-muted mt-2">🚗 Location de Véhicule:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for l in jour_detail.locations %}
+                    <li>• 
+                        {% if l.type_voiture_nom %}{{ l.type_voiture_nom }}{% else %}{{ l.type_location or 'N/A' }}{% endif %}: 
+                        {% if l.nombre_vehicules %}{{ l.nombre_vehicules }} véhicule(s){% endif %}
+                        {% if l.kilometrage %} - {{ l.kilometrage }} km{% endif %}
+                        {% if l.consommation_carburant %} - Consommation: {{ "{:.2f}".format(l.consommation_carburant) }} L{% endif %}
+                        {% if l.prix_ariary %} - Location: {{ "{:,.0f}".format(l.prix_ariary) }} Ar{% endif %}
+                        {% if l.prix_carburant_total %} - <strong class="text-warning">Carburant: {{ "{:,.0f}".format(l.prix_carburant_total) }} Ar</strong>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if jour_detail.locations_journalieres %}
+                <h6 class="text-muted mt-2">🚗 Location Journalière:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for lj in jour_detail.locations_journalieres %}
+                    <li>• 
+                        {% if lj.type_location_nom %}{{ lj.type_location_nom }}{% else %}Location journalière{% endif %}: 
+                        {% if lj.nombre_vehicules %}{{ lj.nombre_vehicules }} véhicule(s){% endif %}
+                        {% if lj.nombre_jours %} - {{ lj.nombre_jours }} jour(s){% endif %}
+                        {% if lj.avec_carburant %}<span class="badge bg-success">Avec carburant</span>{% else %}<span class="badge bg-secondary">Sans carburant</span>{% endif %}
+                        {% if lj.prix_total %} - <strong>{{ "{:,.0f}".format(lj.prix_total) }} Ar</strong>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if jour_detail.reserves %}
+                <h6 class="text-muted mt-2">Réserves/Parcs:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for r in jour_detail.reserves %}
+                    <li>• 
+                        {% if r.nom_reserve %}{{ r.nom_reserve }}{% endif %}
+                        {% if r.nom_parc %}{{ r.nom_parc }}{% endif %}
+                        {% if r.nombre_personnes %}: {{ r.nombre_personnes }} pers.{% endif %}
+                        {% if r.prix_ariary %} - {{ "{:,.0f}".format(r.prix_ariary) }} Ar{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if jour_detail.repas %}
+                <h6 class="text-muted mt-2">Repas:</h6>
+                <ul class="list-unstyled ms-3">
+                    {% for r in jour_detail.repas %}
+                    <li>• {{ r.type_repas }}: 
+                        {% if r.nombre_personnes %}{{ r.nombre_personnes }} pers.{% endif %}
+                        {% if r.prix_ariary %} - {{ "{:,.0f}".format(r.prix_ariary) }} Ar{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Transferts Aéroport -->
+{% if transferts_aeroport %}
+<div class="card mb-4">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0">✈️ Transferts Aéroport</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-unstyled">
+            {% for ta in transferts_aeroport %}
+            <li>• {{ ta.type_transfert }}: 
+                {% if ta.nombre_trajets %}{{ ta.nombre_trajets }} trajet(s){% endif %}
+                {% if ta.prix_total %} - <strong>{{ "{:,.0f}".format(ta.prix_total) }} Ar</strong>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<!-- Guides Accompagnateurs -->
+{% if guides_accompagnateurs %}
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">👤 Guides Accompagnateurs</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-unstyled">
+            {% for g in guides_accompagnateurs %}
+            <li>• Guide accompagnateur: 
+                {% if g.nombre_guides %}{{ g.nombre_guides }} guide(s){% endif %}
+                {% if g.nombre_jours %} - {{ g.nombre_jours }} jour(s){% endif %}
+                {% if g.prix_total %} - <strong>{{ "{:,.0f}".format(g.prix_total) }} Ar</strong>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<!-- Imprévus -->
+{% if imprevus %}
+<div class="card mb-4">
+    <div class="card-header bg-warning text-dark">
+        <h5 class="mb-0">Imprévus</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-unstyled">
+            {% for imp in imprevus %}
+            <li>• {{ imp.description or 'Imprevu' }}: 
+                {% if imp.nombre %}{{ imp.nombre }} unité(s){% endif %}
+                {% if imp.prix_ariary %} - {{ "{:,.0f}".format(imp.prix_ariary) }} Ar{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<button onclick="calculerDevis({{ devis.id }})" class="btn btn-primary">🔄 Recalculer les Totaux</button>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function calculerDevis(devisId) {
+    fetch(`/api/devis/${devisId}/calculer`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert('Erreur: ' + data.error);
+        } else {
+            alert('Totaux recalculés avec succès!\nTotal Ariary: ' + data.total_ariary.toLocaleString() + ' Ar\nTotal Euro: ' + data.total_euro.toFixed(2) + ' €');
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+        alert('Erreur lors du calcul');
+    });
+}
+</script>
+{% endblock %}
+

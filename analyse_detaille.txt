@@ -1,0 +1,3549 @@
+====================================================================================================
+ANALYSE DÉTAILLÉE DU FICHIER: Bases de datos internos.xlsx
+====================================================================================================
+Date d'analyse: 2025-12-17 13:09:46
+
+Nombre de feuilles: 2
+Feuilles disponibles: ['Sara 4 pax', 'Alvaro 2 pax']
+
+
+====================================================================================================
+FEUILLE: Sara 4 pax
+====================================================================================================
+
+Dimensions Excel: Lignes 1-54, Colonnes A-BA (53 colonnes)
+Dimensions pandas: 54 lignes × 53 colonnes
+
+====================================================================================================
+ANALYSE LIGNE PAR LIGNE (Références Excel)
+====================================================================================================
+
+
+--- LIGNE 1 (Excel) / 0 (pandas) ---
+Nombre de cellules non vides: 4
+  A1: Taux 
+  B1: 4420
+  D1: Transfert 
+  E1: 250000
+
+--- LIGNE 2 (Excel) / 1 (pandas) ---
+Nombre de cellules non vides: 5
+  A2: Ref client
+  D2: Pirogue
+  E2: 180000
+  K2: 1
+  L2: 7307.30316742081
+
+--- LIGNE 3 (Excel) / 2 (pandas) ---
+Nombre de cellules non vides: 7
+  A3: Nbr de pax
+  D3: Bateau
+  E3: 540000
+  H3: Total
+  I3: 26047000
+  K3: 2
+  L3: 3653.65158371041
+
+--- LIGNE 4 (Excel) / 3 (pandas) ---
+Nombre de cellules non vides: 7
+  A4: Adulte
+  D4: Location
+  E4: 4802000
+  H4: Marge
+  I4: 6251280
+  K4: 3
+  L4: 2435.76772247361
+
+--- LIGNE 5 (Excel) / 4 (pandas) ---
+Nombre de cellules non vides: 7
+  A5: Enfant
+  D5: Guidage
+  E5: 3850000
+  H5: Tarif en Ariary
+  I5: 32298280
+  K5: 4
+  L5: 1826.8257918552
+
+--- LIGNE 6 (Excel) / 5 (pandas) ---
+Nombre de cellules non vides: 7
+  A6: Bébé
+  D6: Carburant
+  E6: 3952000
+  H6: Tarif en Euro
+  I6: 7307.30316742081
+  K6: 5
+  L6: 1461.46063348416
+
+--- LIGNE 7 (Excel) / 6 (pandas) ---
+Nombre de cellules non vides: 5
+  A7: Date de cotation
+  D7: Reserves
+  E7: 1230000
+  K7: 6
+  L7: 1217.8838612368
+
+--- LIGNE 8 (Excel) / 7 (pandas) ---
+Nombre de cellules non vides: 5
+  A8: chbre
+  D8: Parcs
+  E8: 2165000
+  K8: 7
+  L8: 1043.90045248869
+
+--- LIGNE 9 (Excel) / 8 (pandas) ---
+Nombre de cellules non vides: 4
+  D9: hebergements
+  E9: 6928000
+  K9: 8
+  L9: 913.412895927602
+
+--- LIGNE 10 (Excel) / 9 (pandas) ---
+Nombre de cellules non vides: 4
+  D10: Repas
+  E10: 1550000
+  K10: 9
+  L10: 811.922574157868
+
+--- LIGNE 11 (Excel) / 10 (pandas) ---
+Nombre de cellules non vides: 4
+  D11: S Total 
+  E11: 25447000
+  K11: 10
+  L11: 730.730316742081
+
+--- LIGNE 12 (Excel) / 11 (pandas) ---
+Nombre de cellules non vides: 2
+  K12: 11
+  L12: 664.300287947347
+
+--- LIGNE 13 (Excel) / 12 (pandas) ---
+Nombre de cellules non vides: 5
+  D13: Imprevu
+  E13: Nbr
+  F13: Prix
+  K13: 12
+  L13: 608.941930618401
+
+--- LIGNE 14 (Excel) / 13 (pandas) ---
+Nombre de cellules non vides: 5
+  D14: 150000
+  E14: 4
+  F14: 600000
+  K14: 13
+  L14: 562.100243647755
+
+--- LIGNE 15 (Excel) / 14 (pandas) ---
+Nombre de cellules non vides: 3
+  I15:   
+  K15: 14
+  L15: 521.950226244344
+
+--- LIGNE 16 (Excel) / 15 (pandas) ---
+Nombre de cellules non vides: 2
+  K16: 15
+  L16: 487.153544494721
+
+--- LIGNE 17 (Excel) / 16 (pandas) ---
+Nombre de cellules non vides: 2
+  K17: 16
+  L17: 456.706447963801
+
+--- LIGNE 19 (Excel) / 18 (pandas) ---
+Nombre de cellules non vides: 49
+  A19: Jour
+  B19: Date
+  C19: Itinéraire
+  D19: Transfert
+  E19: Nbr de voiture
+  F19: Prix
+  G19: Pirogue
+  H19: Nbr
+  I19: Prix
+  J19: bateau
+  K19: nbr
+  L19: prix
+  M19: Location sans carburant
+  N19: Nbr
+  O19: prix
+  P19: Kilometrage
+  Q19: Guidage
+  R19: Nbr 
+  S19: Prix
+  T19: Reserve
+  ... et 29 autres cellules
+
+--- LIGNE 20 (Excel) / 19 (pandas) ---
+Nombre de cellules non vides: 24
+  D20: 250000
+  F20: 0
+  I20: 0
+  J20: 225000
+  K20: 2
+  L20: 450000
+  M20: 343000
+  N20: 14
+  O20: 4802000
+  Q20: 275000
+  R20: 14
+  S20: 3850000
+  W20: 0
+  AB20: 0
+  AG20: 0
+  AK20: 0
+  AO20: 0
+  AP20: 5000
+  AQ20: 2
+  AR20: 10000
+  ... et 4 autres cellules
+
+--- LIGNE 21 (Excel) / 20 (pandas) ---
+Nombre de cellules non vides: 29
+  A21: 1
+  B21: 17
+  C21: Andasibe
+  F21: 0
+  I21: 0
+  J21: 45000
+  K21: 2
+  L21: 90000
+  P21: 4200
+  S21: 0
+  T21: Ambatolampy 
+  U21: 10000
+  V21: 2
+  W21: 20000
+  AB21: 0
+  AG21: 0
+  AH21: Chalets des Roses
+  AI21: 192000
+  AJ21: 2
+  AK21: 384000
+  ... et 9 autres cellules
+
+--- LIGNE 22 (Excel) / 21 (pandas) ---
+Nombre de cellules non vides: 29
+  A22: 2
+  B22: 18
+  C22: Antananarivo
+  F22: 0
+  G22: 45000
+  H22: 4
+  I22: 180000
+  L22: 0
+  S22: 0
+  T22: RENIALA
+  U22: 65000
+  V22: 4
+  W22: 260000
+  X22: 30000
+  AB22: 0
+  AG22: 0
+  AH22: Chalets des Roses
+  AI22: 192000
+  AJ22: 2
+  AK22: 384000
+  ... et 9 autres cellules
+
+--- LIGNE 23 (Excel) / 22 (pandas) ---
+Nombre de cellules non vides: 29
+  A23: 3
+  B23: 19
+  C23: Morondava
+  F23: 0
+  I23: 0
+  L23: 0
+  P23: -400
+  S23: 0
+  T23: Allée des Baobab 
+  U23: 20000
+  V23: 1
+  W23: 20000
+  AB23: 0
+  AG23: 0
+  AH23: Vezo Beach
+  AI23: 270000
+  AJ23: 2
+  AK23: 540000
+  AM23: 172000
+  AN23: 0
+  ... et 9 autres cellules
+
+--- LIGNE 24 (Excel) / 23 (pandas) ---
+Nombre de cellules non vides: 26
+  A24: 4
+  B24: 20
+  C24: Bekopaka
+  F24: 0
+  I24: 0
+  L24: 0
+  S24: 0
+  V24: 0
+  W24: 0
+  AB24: 0
+  AG24: 0
+  AH24: Grand Hotel du Tsingy
+  AI24: 400000
+  AJ24: 2
+  AK24: 800000
+  AM24: 250000
+  AN24: 0
+  AO24: 0
+  AP24: 5000
+  AQ24: 2
+  ... et 6 autres cellules
+
+--- LIGNE 25 (Excel) / 24 (pandas) ---
+Nombre de cellules non vides: 28
+  A25: 5
+  B25: 21
+  C25: Bekopaka
+  F25: 0
+  I25: 0
+  L25: 0
+  S25: 0
+  T25: Manandona 
+  U25: 90000
+  V25: 4
+  W25: 360000
+  AB25: 0
+  AG25: 0
+  AH25: Grand Hotel du Tsingy
+  AI25: 400000
+  AJ25: 2
+  AK25: 800000
+  AM25: 250000
+  AN25: 0
+  AO25: 0
+  ... et 8 autres cellules
+
+--- LIGNE 26 (Excel) / 25 (pandas) ---
+Nombre de cellules non vides: 30
+  A26: 6
+  B26: 22
+  C26: Morondava
+  F26: 0
+  I26: 0
+  L26: 0
+  S26: 0
+  T26: Vakona
+  U26: 65000
+  V26: 4
+  W26: 260000
+  Z26: 25000
+  AA26: 5
+  AB26: 125000
+  AG26: 0
+  AH26: Vezo Beach
+  AI26: 270000
+  AJ26: 2
+  AK26: 540000
+  AM26: 250000
+  ... et 10 autres cellules
+
+--- LIGNE 27 (Excel) / 26 (pandas) ---
+Nombre de cellules non vides: 30
+  A27: 7
+  B27: 23
+  C27: Ifaty
+  F27: 0
+  I27: 0
+  L27: 0
+  S27: 0
+  V27: 0
+  W27: 0
+  Y27: Bemaraha
+  Z27: 110000
+  AA27: 4
+  AB27: 440000
+  AC27: 330000
+  AG27: 0
+  AH27: Bamboo club
+  AI27: 200000
+  AJ27: 2
+  AK27: 400000
+  AM27: 250000
+  ... et 10 autres cellules
+
+--- LIGNE 28 (Excel) / 27 (pandas) ---
+Nombre de cellules non vides: 30
+  A28: 8
+  B28: 24
+  C28: Ifaty
+  F28: 0
+  I28: 0
+  L28: 0
+  S28: 0
+  T28: Kirindy
+  U28: 50000
+  V28: 0
+  W28: 0
+  Y28: Tritriva
+  Z28: 25000
+  AA28: 0
+  AB28: 0
+  AG28: 0
+  AH28: Bamboo club
+  AI28: 200000
+  AJ28: 2
+  AK28: 400000
+  ... et 10 autres cellules
+
+--- LIGNE 29 (Excel) / 28 (pandas) ---
+Nombre de cellules non vides: 30
+  A29: 9
+  B29: 25
+  C29: Ranohira
+  F29: 0
+  I29: 0
+  L29: 0
+  S29: 0
+  T29: Voimma
+  U29: 65000
+  V29: 0
+  W29: 0
+  Y29: KIVALO
+  Z29: 110000
+  AB29: 0
+  AG29: 0
+  AH29: Hotel H1
+  AI29: 230000
+  AJ29: 2
+  AK29: 460000
+  AM29: 170000
+  ... et 10 autres cellules
+
+--- LIGNE 30 (Excel) / 29 (pandas) ---
+Nombre de cellules non vides: 29
+  A30: 10
+  B30: 26
+  C30: Ranohira
+  F30: 0
+  I30: 0
+  L30: 0
+  S30: 0
+  T30: Anja 
+  U30: 40000
+  V30: 4
+  W30: 160000
+  X30: 120000
+  AB30: 0
+  AG30: 0
+  AH30: Hotel H1
+  AI30: 230000
+  AJ30: 2
+  AK30: 460000
+  AM30: 170000
+  AN30: 0
+  ... et 9 autres cellules
+
+--- LIGNE 31 (Excel) / 30 (pandas) ---
+Nombre de cellules non vides: 25
+  A31: 11
+  B31: 27
+  C31: Fianarantsoa
+  F31: 0
+  I31: 0
+  L31: 0
+  S31: 0
+  T31: Zafimaniry
+  U31: 50000
+  V31: 0
+  W31: 0
+  Y31: Isalo
+  Z31: 130000
+  AA31: 4
+  AB31: 520000
+  AC31: 240000
+  AG31: 0
+  AH31: Zomatel
+  AI31: 240000
+  AJ31: 2
+  ... et 5 autres cellules
+
+--- LIGNE 32 (Excel) / 31 (pandas) ---
+Nombre de cellules non vides: 19
+  A32: 12
+  B32: 28
+  C32: Antsirabe
+  F32: 0
+  I32: 0
+  L32: 0
+  S32: 0
+  T32: Palmarium
+  W32: 0
+  AB32: 0
+  AG32: 0
+  AH32: MenabeL
+  AI32: 220000
+  AJ32: 2
+  AK32: 440000
+  AO32: 0
+  AU32: 0
+  AX32: 0
+  BA32: 0
+
+--- LIGNE 33 (Excel) / 32 (pandas) ---
+Nombre de cellules non vides: 24
+  A33: 13
+  B33: 29
+  C33: Antananarivo
+  F33: 0
+  I33: 0
+  L33: 0
+  S33: 0
+  T33: Mitsinjo
+  U33: 65000
+  W33: 0
+  Y33: Zombitse
+  Z33: 90000
+  AA33: 4
+  AB33: 360000
+  AC33: 150000
+  AG33: 0
+  AH33: Chalets des Roses
+  AI33: 250000
+  AJ33: 2
+  AK33: 500000
+  ... et 4 autres cellules
+
+--- LIGNE 34 (Excel) / 33 (pandas) ---
+Nombre de cellules non vides: 27
+  A34: 14
+  B34: 30
+  C34: Salida
+  F34: 0
+  I34: 0
+  L34: 0
+  S34: 0
+  T34: PN andasibe
+  U34: 90000
+  V34: 0
+  W34: 0
+  X34: 0
+  AB34: 0
+  AD34: htl - apt
+  AE34: 250000
+  AF34: 1
+  AG34: 250000
+  AH34: Salida
+  AI34: 230000
+  AJ34: 1
+  ... et 7 autres cellules
+
+--- LIGNE 35 (Excel) / 34 (pandas) ---
+Nombre de cellules non vides: 18
+  E35: 1
+  F35: 0
+  I35: 0
+  L35: 0
+  O35: 0
+  S35: 0
+  T35: Tana 
+  U35: 30000
+  V35: 0
+  W35: 0
+  AB35: 0
+  AG35: 0
+  AK35: 0
+  AO35: 0
+  AR35: 0
+  AU35: 0
+  AX35: 0
+  BA35: 0
+
+--- LIGNE 36 (Excel) / 35 (pandas) ---
+Nombre de cellules non vides: 16
+  F36: 0
+  I36: 0
+  L36: 0
+  O36: 0
+  S36: 0
+  T36: Diverses
+  U36: 30000
+  V36: 0
+  W36: 0
+  AB36: 0
+  AG36: 0
+  AO36: 0
+  AR36: 0
+  AU36: 0
+  AX36: 0
+  BA36: 0
+
+--- LIGNE 37 (Excel) / 36 (pandas) ---
+Nombre de cellules non vides: 14
+  C37:      
+  F37: 0
+  I37: 0
+  L37: 0
+  O37: 0
+  S37: 0
+  W37: 0
+  AB37: 0
+  AG37: 0
+  AO37: 0
+  AR37: 0
+  AU37: 0
+  AX37: 0
+  BA37: 0
+
+--- LIGNE 38 (Excel) / 37 (pandas) ---
+Nombre de cellules non vides: 13
+  F38: 0
+  I38: 0
+  L38: 0
+  O38: 0
+  S38: 0
+  W38: 0
+  AB38: 0
+  AG38: 0
+  AO38: 0
+  AR38: 0
+  AU38: 0
+  AX38: 0
+  BA38: 0
+
+--- LIGNE 39 (Excel) / 38 (pandas) ---
+Nombre de cellules non vides: 13
+  F39: 0
+  I39: 0
+  L39: 0
+  O39: 0
+  S39: 0
+  W39: 0
+  AB39: 0
+  AG39: 0
+  AO39: 0
+  AR39: 0
+  AU39: 0
+  AX39: 0
+  BA39: 0
+
+--- LIGNE 40 (Excel) / 39 (pandas) ---
+Nombre de cellules non vides: 13
+  F40: 0
+  I40: 0
+  L40: 0
+  O40: 0
+  S40: 0
+  W40: 0
+  AB40: 0
+  AG40: 0
+  AO40: 0
+  AR40: 0
+  AU40: 0
+  AX40: 0
+  BA40: 0
+
+--- LIGNE 41 (Excel) / 40 (pandas) ---
+Nombre de cellules non vides: 13
+  F41: 0
+  I41: 0
+  L41: 0
+  O41: 0
+  S41: 0
+  W41: 0
+  AB41: 0
+  AG41: 0
+  AO41: 0
+  AR41: 0
+  AU41: 0
+  AX41: 0
+  BA41: 0
+
+--- LIGNE 42 (Excel) / 41 (pandas) ---
+Nombre de cellules non vides: 12
+  I42: 0
+  L42: 0
+  O42: 0
+  S42: 0
+  W42: 0
+  AB42: 0
+  AG42: 0
+  AO42: 0
+  AR42: 0
+  AU42: 0
+  AX42: 0
+  BA42: 0
+
+--- LIGNE 43 (Excel) / 42 (pandas) ---
+Nombre de cellules non vides: 13
+  F43: 0
+  I43: 0
+  L43: 0
+  O43: 0
+  S43: 0
+  W43: 0
+  AB43: 0
+  AG43: 0
+  AO43: 0
+  AR43: 0
+  AU43: 0
+  AX43: 0
+  BA43: 0
+
+--- LIGNE 44 (Excel) / 43 (pandas) ---
+Nombre de cellules non vides: 13
+  F44: 0
+  I44: 0
+  L44: 0
+  O44: 0
+  S44: 0
+  W44: 0
+  AB44: 0
+  AG44: 0
+  AO44: 0
+  AR44: 0
+  AU44: 0
+  AX44: 0
+  BA44: 0
+
+--- LIGNE 45 (Excel) / 44 (pandas) ---
+Nombre de cellules non vides: 13
+  F45: 0
+  I45: 0
+  L45: 0
+  O45: 0
+  S45: 0
+  W45: 0
+  AB45: 0
+  AG45: 0
+  AO45: 0
+  AR45: 0
+  AU45: 0
+  AX45: 0
+  BA45: 0
+
+--- LIGNE 46 (Excel) / 45 (pandas) ---
+Nombre de cellules non vides: 13
+  F46: 0
+  I46: 0
+  L46: 0
+  O46: 0
+  S46: 0
+  W46: 0
+  AB46: 0
+  AG46: 0
+  AO46: 0
+  AR46: 0
+  AU46: 0
+  AX46: 0
+  BA46: 0
+
+--- LIGNE 47 (Excel) / 46 (pandas) ---
+Nombre de cellules non vides: 14
+  F47: 0
+  I47: 0
+  L47: 0
+  O47: 0
+  S47: 0
+  W47: 0
+  AB47: 0
+  AG47: 0
+  AK47: 0
+  AO47: 0
+  AR47: 0
+  AU47: 0
+  AX47: 0
+  BA47: 0
+
+--- LIGNE 48 (Excel) / 47 (pandas) ---
+Nombre de cellules non vides: 14
+  F48: 0
+  I48: 0
+  L48: 0
+  O48: 0
+  S48: 0
+  W48: 0
+  AB48: 0
+  AG48: 0
+  AK48: 0
+  AO48: 0
+  AR48: 0
+  AU48: 0
+  AX48: 0
+  BA48: 0
+
+--- LIGNE 49 (Excel) / 48 (pandas) ---
+Nombre de cellules non vides: 17
+  F49: 0
+  I49: 180000
+  L49: 540000
+  O49: 4802000
+  P49: 3800
+  S49: 3850000
+  W49: 1080000
+  X49: 150000
+  AB49: 1445000
+  AC49: 720000
+  AG49: 250000
+  AK49: 6818000
+  AO49: 0
+  AR49: 110000
+  AU49: 1550000
+  AX49: 0
+  BA49: 0
+
+--- LIGNE 51 (Excel) / 50 (pandas) ---
+Nombre de cellules non vides: 2
+  O51: 100
+  P51: 20
+
+--- LIGNE 52 (Excel) / 51 (pandas) ---
+Nombre de cellules non vides: 1
+  O52: 3800
+
+--- LIGNE 53 (Excel) / 52 (pandas) ---
+Nombre de cellules non vides: 1
+  O53: 760
+
+--- LIGNE 54 (Excel) / 53 (pandas) ---
+Nombre de cellules non vides: 2
+  O54: 5200
+  P54: 3952000
+
+====================================================================================================
+ANALYSE COLONNE PAR COLONNE (Références Excel)
+====================================================================================================
+
+
+--- COLONNE A (Excel) / Colonne 0 (pandas) ---
+Nombre de cellules non vides: 23
+Pourcentage rempli: 42.6%
+Premières valeurs:
+  Ligne 1: Taux 
+  Ligne 2: Ref client
+  Ligne 3: Nbr de pax
+  Ligne 4: Adulte
+  Ligne 5: Enfant
+  Ligne 6: Bébé
+  Ligne 7: Date de cotation
+  Ligne 8: chbre
+  Ligne 19: Jour
+  Ligne 21: 1
+  ... et 13 autres valeurs
+Types de données: {'str': 9, 'int': 14}
+Statistiques numériques:
+  Min: 1
+  Max: 14
+  Moyenne: 7.50
+
+--- COLONNE B (Excel) / Colonne 1 (pandas) ---
+Nombre de cellules non vides: 16
+Pourcentage rempli: 29.6%
+Premières valeurs:
+  Ligne 1: 4420
+  Ligne 19: Date
+  Ligne 21: 17
+  Ligne 22: 18
+  Ligne 23: 19
+  Ligne 24: 20
+  Ligne 25: 21
+  Ligne 26: 22
+  Ligne 27: 23
+  Ligne 28: 24
+  ... et 6 autres valeurs
+Types de données: {'int': 15, 'str': 1}
+Statistiques numériques:
+  Min: 17
+  Max: 4420
+  Moyenne: 316.60
+
+--- COLONNE C (Excel) / Colonne 2 (pandas) ---
+Nombre de cellules non vides: 16
+Pourcentage rempli: 29.6%
+Premières valeurs:
+  Ligne 19: Itinéraire
+  Ligne 21: Andasibe
+  Ligne 22: Antananarivo
+  Ligne 23: Morondava
+  Ligne 24: Bekopaka
+  Ligne 25: Bekopaka
+  Ligne 26: Morondava
+  Ligne 27: Ifaty
+  Ligne 28: Ifaty
+  Ligne 29: Ranohira
+  ... et 6 autres valeurs
+Types de données: {'str': 16}
+
+--- COLONNE D (Excel) / Colonne 3 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 1: Transfert 
+  Ligne 2: Pirogue
+  Ligne 3: Bateau
+  Ligne 4: Location
+  Ligne 5: Guidage
+  Ligne 6: Carburant
+  Ligne 7: Reserves
+  Ligne 8: Parcs
+  Ligne 9: hebergements
+  Ligne 10: Repas
+  ... et 5 autres valeurs
+Types de données: {'str': 13, 'int': 2}
+Statistiques numériques:
+  Min: 150000
+  Max: 250000
+  Moyenne: 200000.00
+
+--- COLONNE E (Excel) / Colonne 4 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 1: 250000
+  Ligne 2: 180000
+  Ligne 3: 540000
+  Ligne 4: 4802000
+  Ligne 5: 3850000
+  Ligne 6: 3952000
+  Ligne 7: 1230000
+  Ligne 8: 2165000
+  Ligne 9: 6928000
+  Ligne 10: 1550000
+  ... et 5 autres valeurs
+Types de données: {'int': 13, 'str': 2}
+Statistiques numériques:
+  Min: 1
+  Max: 25447000
+  Moyenne: 3914923.46
+
+--- COLONNE F (Excel) / Colonne 5 (pandas) ---
+Nombre de cellules non vides: 32
+Pourcentage rempli: 59.3%
+Premières valeurs:
+  Ligne 13: Prix
+  Ligne 14: 600000
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  ... et 22 autres valeurs
+Types de données: {'str': 2, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 600000
+  Moyenne: 20000.00
+
+--- COLONNE G (Excel) / Colonne 6 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Pirogue
+  Ligne 22: 45000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 45000
+  Max: 45000
+  Moyenne: 45000.00
+
+--- COLONNE H (Excel) / Colonne 7 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 3: Total
+  Ligne 4: Marge
+  Ligne 5: Tarif en Ariary
+  Ligne 6: Tarif en Euro
+  Ligne 19: Nbr
+  Ligne 22: 4
+Types de données: {'str': 5, 'int': 1}
+Statistiques numériques:
+  Min: 4
+  Max: 4
+  Moyenne: 4.00
+
+--- COLONNE I (Excel) / Colonne 8 (pandas) ---
+Nombre de cellules non vides: 36
+Pourcentage rempli: 66.7%
+Premières valeurs:
+  Ligne 3: 26047000
+  Ligne 4: 6251280
+  Ligne 5: 32298280
+  Ligne 6: 7307.30316742081
+  Ligne 15:   
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 180000
+  Ligne 23: 0
+  ... et 26 autres valeurs
+Types de données: {'int': 33, 'float': 1, 'str': 2}
+Statistiques numériques:
+  Min: 0
+  Max: 32298280
+  Moyenne: 1910701.98
+
+--- COLONNE J (Excel) / Colonne 9 (pandas) ---
+Nombre de cellules non vides: 3
+Pourcentage rempli: 5.6%
+Premières valeurs:
+  Ligne 19: bateau
+  Ligne 20: 225000
+  Ligne 21: 45000
+Types de données: {'str': 1, 'int': 2}
+Statistiques numériques:
+  Min: 45000
+  Max: 225000
+  Moyenne: 135000.00
+
+--- COLONNE K (Excel) / Colonne 10 (pandas) ---
+Nombre de cellules non vides: 19
+Pourcentage rempli: 35.2%
+Premières valeurs:
+  Ligne 2: 1
+  Ligne 3: 2
+  Ligne 4: 3
+  Ligne 5: 4
+  Ligne 6: 5
+  Ligne 7: 6
+  Ligne 8: 7
+  Ligne 9: 8
+  Ligne 10: 9
+  Ligne 11: 10
+  ... et 9 autres valeurs
+Types de données: {'int': 18, 'str': 1}
+Statistiques numériques:
+  Min: 1
+  Max: 16
+  Moyenne: 7.78
+
+--- COLONNE L (Excel) / Colonne 11 (pandas) ---
+Nombre de cellules non vides: 47
+Pourcentage rempli: 87.0%
+Premières valeurs:
+  Ligne 2: 7307.30316742081
+  Ligne 3: 3653.65158371041
+  Ligne 4: 2435.76772247361
+  Ligne 5: 1826.8257918552
+  Ligne 6: 1461.46063348416
+  Ligne 7: 1217.8838612368
+  Ligne 8: 1043.90045248869
+  Ligne 9: 913.412895927602
+  Ligne 10: 811.922574157868
+  Ligne 11: 730.730316742081
+  ... et 37 autres valeurs
+Types de données: {'float': 16, 'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 540000
+  Moyenne: 24015.30
+
+--- COLONNE M (Excel) / Colonne 12 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Location sans carburant
+  Ligne 20: 343000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 343000
+  Max: 343000
+  Moyenne: 343000.00
+
+--- COLONNE N (Excel) / Colonne 13 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 20: 14
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 14
+  Max: 14
+  Moyenne: 14.00
+
+--- COLONNE O (Excel) / Colonne 14 (pandas) ---
+Nombre de cellules non vides: 21
+Pourcentage rempli: 38.9%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 4802000
+  Ligne 35: 0
+  Ligne 36: 0
+  Ligne 37: 0
+  Ligne 38: 0
+  Ligne 39: 0
+  Ligne 40: 0
+  Ligne 41: 0
+  Ligne 42: 0
+  ... et 11 autres valeurs
+Types de données: {'str': 1, 'int': 20}
+Statistiques numériques:
+  Min: 0
+  Max: 4802000
+  Moyenne: 480693.00
+
+--- COLONNE P (Excel) / Colonne 15 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 19: Kilometrage
+  Ligne 21: 4200
+  Ligne 23: -400
+  Ligne 49: 3800
+  Ligne 51: 20
+  Ligne 54: 3952000
+Types de données: {'str': 1, 'int': 5}
+Statistiques numériques:
+  Min: -400
+  Max: 3952000
+  Moyenne: 791924.00
+
+--- COLONNE Q (Excel) / Colonne 16 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 20: 275000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 275000
+  Max: 275000
+  Moyenne: 275000.00
+
+--- COLONNE R (Excel) / Colonne 17 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Nbr 
+  Ligne 20: 14
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 14
+  Max: 14
+  Moyenne: 14.00
+
+--- COLONNE S (Excel) / Colonne 18 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: Prix
+  Ligne 20: 3850000
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 3850000
+  Moyenne: 256666.67
+
+--- COLONNE T (Excel) / Colonne 19 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Reserve
+  Ligne 21: Ambatolampy 
+  Ligne 22: RENIALA
+  Ligne 23: Allée des Baobab 
+  Ligne 25: Manandona 
+  Ligne 26: Vakona
+  Ligne 28: Kirindy
+  Ligne 29: Voimma
+  Ligne 30: Anja 
+  Ligne 31: Zafimaniry
+  ... et 5 autres valeurs
+Types de données: {'str': 15}
+
+--- COLONNE U (Excel) / Colonne 20 (pandas) ---
+Nombre de cellules non vides: 14
+Pourcentage rempli: 25.9%
+Premières valeurs:
+  Ligne 19: Prix 
+  Ligne 21: 10000
+  Ligne 22: 65000
+  Ligne 23: 20000
+  Ligne 25: 90000
+  Ligne 26: 65000
+  Ligne 28: 50000
+  Ligne 29: 65000
+  Ligne 30: 40000
+  Ligne 31: 50000
+  ... et 4 autres valeurs
+Types de données: {'str': 1, 'int': 13}
+Statistiques numériques:
+  Min: 10000
+  Max: 90000
+  Moyenne: 51538.46
+
+--- COLONNE V (Excel) / Colonne 21 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 21: 2
+  Ligne 22: 4
+  Ligne 23: 1
+  Ligne 24: 0
+  Ligne 25: 4
+  Ligne 26: 4
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 0
+  ... et 5 autres valeurs
+Types de données: {'str': 1, 'int': 14}
+Statistiques numériques:
+  Min: 0
+  Max: 4
+  Moyenne: 1.36
+
+--- COLONNE W (Excel) / Colonne 22 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 20000
+  Ligne 22: 260000
+  Ligne 23: 20000
+  Ligne 24: 0
+  Ligne 25: 360000
+  Ligne 26: 260000
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 1080000
+  Moyenne: 72000.00
+
+--- COLONNE X (Excel) / Colonne 23 (pandas) ---
+Nombre de cellules non vides: 5
+Pourcentage rempli: 9.3%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 22: 30000
+  Ligne 30: 120000
+  Ligne 34: 0
+  Ligne 49: 150000
+Types de données: {'str': 1, 'int': 4}
+Statistiques numériques:
+  Min: 0
+  Max: 150000
+  Moyenne: 75000.00
+
+--- COLONNE Y (Excel) / Colonne 24 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 19: NOM
+  Ligne 27: Bemaraha
+  Ligne 28: Tritriva
+  Ligne 29: KIVALO
+  Ligne 31: Isalo
+  Ligne 33: Zombitse
+Types de données: {'str': 6}
+
+--- COLONNE Z (Excel) / Colonne 25 (pandas) ---
+Nombre de cellules non vides: 7
+Pourcentage rempli: 13.0%
+Premières valeurs:
+  Ligne 19: PN
+  Ligne 26: 25000
+  Ligne 27: 110000
+  Ligne 28: 25000
+  Ligne 29: 110000
+  Ligne 31: 130000
+  Ligne 33: 90000
+Types de données: {'str': 1, 'int': 6}
+Statistiques numériques:
+  Min: 25000
+  Max: 130000
+  Moyenne: 81666.67
+
+--- COLONNE AA (Excel) / Colonne 26 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 26: 5
+  Ligne 27: 4
+  Ligne 28: 0
+  Ligne 31: 4
+  Ligne 33: 4
+Types de données: {'str': 1, 'int': 5}
+Statistiques numériques:
+  Min: 0
+  Max: 5
+  Moyenne: 3.40
+
+--- COLONNE AB (Excel) / Colonne 27 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 125000
+  Ligne 27: 440000
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 1445000
+  Moyenne: 96333.33
+
+--- COLONNE AC (Excel) / Colonne 28 (pandas) ---
+Nombre de cellules non vides: 5
+Pourcentage rempli: 9.3%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 27: 330000
+  Ligne 31: 240000
+  Ligne 33: 150000
+  Ligne 49: 720000
+Types de données: {'str': 1, 'int': 4}
+Statistiques numériques:
+  Min: 150000
+  Max: 720000
+  Moyenne: 360000.00
+
+--- COLONNE AD (Excel) / Colonne 29 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 34: htl - apt
+Types de données: {'str': 1}
+
+--- COLONNE AE (Excel) / Colonne 30 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Transfert htl
+  Ligne 34: 250000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 250000
+  Max: 250000
+  Moyenne: 250000.00
+
+--- COLONNE AF (Excel) / Colonne 31 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: nbr
+  Ligne 34: 1
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 1
+  Max: 1
+  Moyenne: 1.00
+
+--- COLONNE AG (Excel) / Colonne 32 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 250000
+  Moyenne: 16666.67
+
+--- COLONNE AH (Excel) / Colonne 33 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Double
+  Ligne 21: Chalets des Roses
+  Ligne 22: Chalets des Roses
+  Ligne 23: Vezo Beach
+  Ligne 24: Grand Hotel du Tsingy
+  Ligne 25: Grand Hotel du Tsingy
+  Ligne 26: Vezo Beach
+  Ligne 27: Bamboo club
+  Ligne 28: Bamboo club
+  Ligne 29: Hotel H1
+  ... et 5 autres valeurs
+Types de données: {'str': 15}
+
+--- COLONNE AI (Excel) / Colonne 34 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Hotel
+  Ligne 21: 192000
+  Ligne 22: 192000
+  Ligne 23: 270000
+  Ligne 24: 400000
+  Ligne 25: 400000
+  Ligne 26: 270000
+  Ligne 27: 200000
+  Ligne 28: 200000
+  Ligne 29: 230000
+  ... et 5 autres valeurs
+Types de données: {'str': 1, 'int': 14}
+Statistiques numériques:
+  Min: 192000
+  Max: 400000
+  Moyenne: 251714.29
+
+--- COLONNE AJ (Excel) / Colonne 35 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: nbr
+  Ligne 21: 2
+  Ligne 22: 2
+  Ligne 23: 2
+  Ligne 24: 2
+  Ligne 25: 2
+  Ligne 26: 2
+  Ligne 27: 2
+  Ligne 28: 2
+  Ligne 29: 2
+  ... et 5 autres valeurs
+Types de données: {'str': 1, 'int': 14}
+Statistiques numériques:
+  Min: 1
+  Max: 2
+  Moyenne: 1.93
+
+--- COLONNE AK (Excel) / Colonne 36 (pandas) ---
+Nombre de cellules non vides: 20
+Pourcentage rempli: 37.0%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 384000
+  Ligne 22: 384000
+  Ligne 23: 540000
+  Ligne 24: 800000
+  Ligne 25: 800000
+  Ligne 26: 540000
+  Ligne 27: 400000
+  Ligne 28: 400000
+  ... et 10 autres valeurs
+Types de données: {'str': 1, 'int': 19}
+Statistiques numériques:
+  Min: 0
+  Max: 6818000
+  Moyenne: 717684.21
+
+--- COLONNE AL (Excel) / Colonne 37 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Triple
+Types de données: {'str': 1}
+
+--- COLONNE AM (Excel) / Colonne 38 (pandas) ---
+Nombre de cellules non vides: 7
+Pourcentage rempli: 13.0%
+Premières valeurs:
+  Ligne 23: 172000
+  Ligne 24: 250000
+  Ligne 25: 250000
+  Ligne 26: 250000
+  Ligne 27: 250000
+  Ligne 29: 170000
+  Ligne 30: 170000
+Types de données: {'int': 7}
+Statistiques numériques:
+  Min: 170000
+  Max: 250000
+  Moyenne: 216000.00
+
+--- COLONNE AN (Excel) / Colonne 39 (pandas) ---
+Nombre de cellules non vides: 8
+Pourcentage rempli: 14.8%
+Premières valeurs:
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 0
+  Ligne 30: 0
+Types de données: {'int': 8}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AO (Excel) / Colonne 40 (pandas) ---
+Nombre de cellules non vides: 30
+Pourcentage rempli: 55.6%
+Premières valeurs:
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 0
+  ... et 20 autres valeurs
+Types de données: {'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AP (Excel) / Colonne 41 (pandas) ---
+Nombre de cellules non vides: 12
+Pourcentage rempli: 22.2%
+Premières valeurs:
+  Ligne 19: Vinette
+  Ligne 20: 5000
+  Ligne 21: 5000
+  Ligne 22: 5000
+  Ligne 23: 5000
+  Ligne 24: 5000
+  Ligne 25: 5000
+  Ligne 26: 5000
+  Ligne 27: 5000
+  Ligne 28: 5000
+  ... et 2 autres valeurs
+Types de données: {'str': 1, 'int': 11}
+Statistiques numériques:
+  Min: 5000
+  Max: 5000
+  Moyenne: 5000.00
+
+--- COLONNE AQ (Excel) / Colonne 42 (pandas) ---
+Nombre de cellules non vides: 12
+Pourcentage rempli: 22.2%
+Premières valeurs:
+  Ligne 19: nbr 
+  Ligne 20: 2
+  Ligne 21: 2
+  Ligne 22: 2
+  Ligne 23: 2
+  Ligne 24: 2
+  Ligne 25: 2
+  Ligne 26: 2
+  Ligne 27: 2
+  Ligne 28: 2
+  ... et 2 autres valeurs
+Types de données: {'str': 1, 'int': 11}
+Statistiques numériques:
+  Min: 2
+  Max: 2
+  Moyenne: 2.00
+
+--- COLONNE AR (Excel) / Colonne 43 (pandas) ---
+Nombre de cellules non vides: 27
+Pourcentage rempli: 50.0%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 10000
+  Ligne 21: 10000
+  Ligne 22: 10000
+  Ligne 23: 10000
+  Ligne 24: 10000
+  Ligne 25: 10000
+  Ligne 26: 10000
+  Ligne 27: 10000
+  Ligne 28: 10000
+  ... et 17 autres valeurs
+Types de données: {'str': 1, 'int': 26}
+Statistiques numériques:
+  Min: 0
+  Max: 110000
+  Moyenne: 8461.54
+
+--- COLONNE AS (Excel) / Colonne 44 (pandas) ---
+Nombre de cellules non vides: 13
+Pourcentage rempli: 24.1%
+Premières valeurs:
+  Ligne 19: PD
+  Ligne 20: 25000
+  Ligne 21: 25000
+  Ligne 22: 25000
+  Ligne 23: 65000
+  Ligne 24: 25000
+  Ligne 25: 25000
+  Ligne 26: 25000
+  Ligne 27: 25000
+  Ligne 28: 50000
+  ... et 3 autres valeurs
+Types de données: {'str': 1, 'int': 12}
+Statistiques numériques:
+  Min: 25000
+  Max: 65000
+  Moyenne: 32500.00
+
+--- COLONNE AT (Excel) / Colonne 45 (pandas) ---
+Nombre de cellules non vides: 12
+Pourcentage rempli: 22.2%
+Premières valeurs:
+  Ligne 19: nbr
+  Ligne 21: 4
+  Ligne 22: 4
+  Ligne 23: 5
+  Ligne 24: 4
+  Ligne 25: 4
+  Ligne 26: 4
+  Ligne 27: 4
+  Ligne 28: 4
+  Ligne 29: 4
+  ... et 2 autres valeurs
+Types de données: {'str': 1, 'int': 11}
+Statistiques numériques:
+  Min: 4
+  Max: 5
+  Moyenne: 4.18
+
+--- COLONNE AU (Excel) / Colonne 46 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 100000
+  Ligne 22: 100000
+  Ligne 23: 325000
+  Ligne 24: 100000
+  Ligne 25: 100000
+  Ligne 26: 100000
+  Ligne 27: 100000
+  Ligne 28: 200000
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 1550000
+  Moyenne: 103333.33
+
+--- COLONNE AV (Excel) / Colonne 47 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: DN
+Types de données: {'str': 1}
+
+--- COLONNE AW (Excel) / Colonne 48 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Nbr
+Types de données: {'str': 1}
+
+--- COLONNE AX (Excel) / Colonne 49 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AY (Excel) / Colonne 50 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: DJ
+Types de données: {'str': 1}
+
+--- COLONNE AZ (Excel) / Colonne 51 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Nbr 
+Types de données: {'str': 1}
+
+--- COLONNE BA (Excel) / Colonne 52 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+====================================================================================================
+ANALYSE STRUCTURELLE - IDENTIFICATION DES SECTIONS
+====================================================================================================
+
+Ligne 2 - En-têtes potentiels trouvés:
+  A2: Ref client
+Ligne 3 - En-têtes potentiels trouvés:
+  A3: Nbr de pax
+  H3: Total
+Ligne 4 - En-têtes potentiels trouvés:
+  A4: Adulte
+Ligne 5 - En-têtes potentiels trouvés:
+  A5: Enfant
+Ligne 7 - En-têtes potentiels trouvés:
+  A7: Date de cotation
+Ligne 11 - En-têtes potentiels trouvés:
+  D11: S Total 
+Ligne 13 - En-têtes potentiels trouvés:
+  E13: Nbr
+  F13: Prix
+Ligne 19 - En-têtes potentiels trouvés:
+  A19: Jour
+  B19: Date
+  E19: Nbr de voiture
+  F19: Prix
+  H19: Nbr
+  I19: Prix
+  K19: nbr
+  L19: prix
+  N19: Nbr
+  O19: prix
+  R19: Nbr 
+  S19: Prix
+  U19: Prix 
+  V19: Nbr
+  W19: prix
+  AA19: Nbr
+  AB19: prix
+  AF19: nbr
+  AG19: prix
+  AJ19: nbr
+  AK19: prix
+  AQ19: nbr 
+  AR19: prix
+  AT19: nbr
+  AU19: prix
+  AW19: Nbr
+  AX19: Prix
+  AZ19: Nbr 
+  BA19: prix
+
+====================================================================================================
+MATRICE COMPLÈTE DES DONNÉES (Toutes les cellules non vides)
+====================================================================================================
+
+Total de cellules non vides dans la feuille: 751
+Total de cellules possibles: 2862 = 2862
+Pourcentage de remplissage: 26.2%
+
+====================================================================================================
+FEUILLE: Alvaro 2 pax
+====================================================================================================
+
+Dimensions Excel: Lignes 1-54, Colonnes A-BA (53 colonnes)
+Dimensions pandas: 54 lignes × 53 colonnes
+
+====================================================================================================
+ANALYSE LIGNE PAR LIGNE (Références Excel)
+====================================================================================================
+
+
+--- LIGNE 1 (Excel) / 0 (pandas) ---
+Nombre de cellules non vides: 4
+  A1: Taux 
+  B1: 4420
+  D1: Transfert 
+  E1: 250000
+
+--- LIGNE 2 (Excel) / 1 (pandas) ---
+Nombre de cellules non vides: 5
+  A2: Ref client
+  D2: Pirogue
+  E2: 180000
+  K2: 1
+  L2: 7909.12398190045
+
+--- LIGNE 3 (Excel) / 2 (pandas) ---
+Nombre de cellules non vides: 7
+  A3: Nbr de pax
+  D3: Bateau
+  E3: 540000
+  H3: Total
+  I3: 28192200
+  K3: 2
+  L3: 3954.56199095023
+
+--- LIGNE 4 (Excel) / 3 (pandas) ---
+Nombre de cellules non vides: 7
+  A4: Adulte
+  D4: Location
+  E4: 4802000
+  H4: Marge
+  I4: 6766128
+  K4: 3
+  L4: 2636.37466063348
+
+--- LIGNE 5 (Excel) / 4 (pandas) ---
+Nombre de cellules non vides: 7
+  A5: Enfant
+  D5: Guidage
+  E5: 3850000
+  H5: Tarif en Ariary
+  I5: 34958328
+  K5: 4
+  L5: 1977.28099547511
+
+--- LIGNE 6 (Excel) / 5 (pandas) ---
+Nombre de cellules non vides: 7
+  A6: Bébé
+  D6: Carburant
+  E6: 3712800
+  H6: Tarif en Euro
+  I6: 7909.12398190045
+  K6: 5
+  L6: 1581.82479638009
+
+--- LIGNE 7 (Excel) / 6 (pandas) ---
+Nombre de cellules non vides: 5
+  A7: Date de cotation
+  D7: Reserves
+  E7: 1220000
+  K7: 6
+  L7: 1318.18733031674
+
+--- LIGNE 8 (Excel) / 7 (pandas) ---
+Nombre de cellules non vides: 5
+  A8: chbre
+  D8: Parcs
+  E8: 1455000
+  K8: 7
+  L8: 1129.87485455721
+
+--- LIGNE 9 (Excel) / 8 (pandas) ---
+Nombre de cellules non vides: 4
+  D9: hebergements
+  E9: 11882400
+  K9: 8
+  L9: 988.640497737557
+
+--- LIGNE 10 (Excel) / 9 (pandas) ---
+Nombre de cellules non vides: 4
+  D10: Repas
+  E10: 0
+  K10: 9
+  L10: 878.791553544495
+
+--- LIGNE 11 (Excel) / 10 (pandas) ---
+Nombre de cellules non vides: 4
+  D11: S Total 
+  E11: 27892200
+  K11: 10
+  L11: 790.912398190045
+
+--- LIGNE 12 (Excel) / 11 (pandas) ---
+Nombre de cellules non vides: 2
+  K12: 11
+  L12: 719.011271081859
+
+--- LIGNE 13 (Excel) / 12 (pandas) ---
+Nombre de cellules non vides: 5
+  D13: Imprevu
+  E13: Nbr
+  F13: Prix
+  K13: 12
+  L13: 659.093665158371
+
+--- LIGNE 14 (Excel) / 13 (pandas) ---
+Nombre de cellules non vides: 5
+  D14: 150000
+  E14: 2
+  F14: 300000
+  K14: 13
+  L14: 608.394152453881
+
+--- LIGNE 15 (Excel) / 14 (pandas) ---
+Nombre de cellules non vides: 3
+  I15:   
+  K15: 14
+  L15: 564.937427278604
+
+--- LIGNE 16 (Excel) / 15 (pandas) ---
+Nombre de cellules non vides: 2
+  K16: 15
+  L16: 527.274932126697
+
+--- LIGNE 17 (Excel) / 16 (pandas) ---
+Nombre de cellules non vides: 2
+  K17: 16
+  L17: 494.320248868778
+
+--- LIGNE 19 (Excel) / 18 (pandas) ---
+Nombre de cellules non vides: 49
+  A19: Jour
+  B19: Date
+  C19: Itinéraire
+  D19: Transfert
+  E19: Nbr de voiture
+  F19: Prix
+  G19: Pirogue
+  H19: Nbr
+  I19: Prix
+  J19: bateau
+  K19: nbr
+  L19: prix
+  M19: Location sans carburant
+  N19: Nbr
+  O19: prix
+  P19: Kilometrage
+  Q19: Guidage
+  R19: Nbr 
+  S19: Prix
+  T19: Reserve
+  ... et 29 autres cellules
+
+--- LIGNE 20 (Excel) / 19 (pandas) ---
+Nombre de cellules non vides: 25
+  B20: 10
+  D20: 250000
+  F20: 0
+  I20: 0
+  J20: 225000
+  K20: 2
+  L20: 450000
+  M20: 343000
+  N20: 14
+  O20: 4802000
+  Q20: 275000
+  R20: 14
+  S20: 3850000
+  W20: 0
+  AB20: 0
+  AG20: 0
+  AK20: 0
+  AO20: 0
+  AP20: 5000
+  AQ20: 20
+  ... et 5 autres cellules
+
+--- LIGNE 21 (Excel) / 20 (pandas) ---
+Nombre de cellules non vides: 27
+  A21: 1
+  B21: 11
+  C21: Tnr-per
+  F21: 0
+  I21: 0
+  J21: 45000
+  K21: 2
+  L21: 90000
+  P21: 4200
+  S21: 0
+  T21: Ambatolampy 
+  U21: 10000
+  V21: 2
+  W21: 20000
+  AB21: 0
+  AG21: 0
+  AH21: Feo ny Ala
+  AI21: 152000
+  AJ21: 1
+  AK21: 152000
+  ... et 7 autres cellules
+
+--- LIGNE 22 (Excel) / 21 (pandas) ---
+Nombre de cellules non vides: 27
+  A22: 2
+  B22: 12
+  C22: per
+  F22: 0
+  G22: 45000
+  H22: 4
+  I22: 180000
+  L22: 0
+  S22: 0
+  T22: RENIALA
+  U22: 65000
+  V22: 2
+  W22: 130000
+  X22: 30000
+  AB22: 0
+  AG22: 0
+  AH22: Feo ny Ala
+  AI22: 152000
+  AJ22: 1
+  AK22: 152000
+  ... et 7 autres cellules
+
+--- LIGNE 23 (Excel) / 22 (pandas) ---
+Nombre de cellules non vides: 26
+  A23: 3
+  B23: 13
+  C23: Per-atj
+  F23: 0
+  I23: 0
+  L23: 0
+  S23: 0
+  T23: Allée des Baobab 
+  U23: 20000
+  V23: 1
+  W23: 20000
+  AB23: 0
+  AG23: 0
+  AH23: Menabe L
+  AI23: 230000
+  AJ23: 1
+  AK23: 230000
+  AM23: 172000
+  AN23: 0
+  AO23: 0
+  ... et 6 autres cellules
+
+--- LIGNE 24 (Excel) / 23 (pandas) ---
+Nombre de cellules non vides: 24
+  A24: 4
+  B24: 14
+  C24: atj-moq
+  F24: 0
+  I24: 0
+  L24: 0
+  S24: 0
+  V24: 0
+  W24: 0
+  AB24: 0
+  AG24: 0
+  AH24: Palissandres
+  AI24: 984200
+  AJ24: 1
+  AK24: 984200
+  AM24: 250000
+  AN24: 0
+  AO24: 0
+  AP24: 5000
+  AR24: 0
+  ... et 4 autres cellules
+
+--- LIGNE 25 (Excel) / 24 (pandas) ---
+Nombre de cellules non vides: 26
+  A25: 5
+  B25: 15
+  C25: Morondava-Bekopaka
+  F25: 0
+  I25: 0
+  L25: 0
+  S25: 0
+  T25: Manandona 
+  U25: 90000
+  V25: 2
+  W25: 180000
+  AB25: 0
+  AG25: 0
+  AH25: Soleil du Tsingy PC
+  AI25: 995000
+  AJ25: 1
+  AK25: 995000
+  AM25: 250000
+  AN25: 0
+  AO25: 0
+  ... et 6 autres cellules
+
+--- LIGNE 26 (Excel) / 25 (pandas) ---
+Nombre de cellules non vides: 28
+  A26: 6
+  B26: 16
+  C26: Bekopaka
+  F26: 0
+  I26: 0
+  L26: 0
+  S26: 0
+  T26: Vakona
+  U26: 65000
+  V26: 2
+  W26: 130000
+  Z26: 25000
+  AA26: 3
+  AB26: 75000
+  AG26: 0
+  AH26: Soleil du Tsingy PC
+  AI26: 995000
+  AJ26: 1
+  AK26: 995000
+  AM26: 250000
+  ... et 8 autres cellules
+
+--- LIGNE 27 (Excel) / 26 (pandas) ---
+Nombre de cellules non vides: 28
+  A27: 7
+  B27: 17
+  C27: Bekopaka-Morondava
+  F27: 0
+  I27: 0
+  L27: 0
+  S27: 0
+  V27: 0
+  W27: 0
+  Y27: Bemaraha
+  Z27: 110000
+  AA27: 2
+  AB27: 220000
+  AC27: 330000
+  AG27: 0
+  AH27: Palissandres
+  AI27: 984200
+  AJ27: 1
+  AK27: 984200
+  AM27: 250000
+  ... et 8 autres cellules
+
+--- LIGNE 28 (Excel) / 27 (pandas) ---
+Nombre de cellules non vides: 28
+  A28: 8
+  B28: 18
+  C28: Morondava-Ifaty
+  F28: 0
+  I28: 0
+  L28: 0
+  S28: 0
+  T28: Kirindy
+  U28: 50000
+  V28: 0
+  W28: 0
+  Y28: Tritriva
+  Z28: 25000
+  AA28: 0
+  AB28: 0
+  AG28: 0
+  AH28: Bamboo club
+  AI28: 230000
+  AJ28: 1
+  AK28: 230000
+  ... et 8 autres cellules
+
+--- LIGNE 29 (Excel) / 28 (pandas) ---
+Nombre de cellules non vides: 28
+  A29: 9
+  B29: 19
+  C29: Ifaty
+  F29: 0
+  I29: 0
+  L29: 0
+  S29: 0
+  T29: Voimma
+  U29: 65000
+  V29: 2
+  W29: 130000
+  Y29: KIVALO
+  Z29: 110000
+  AB29: 0
+  AG29: 0
+  AH29: Bamboo club
+  AI29: 230000
+  AJ29: 1
+  AK29: 230000
+  AM29: 170000
+  ... et 8 autres cellules
+
+--- LIGNE 30 (Excel) / 29 (pandas) ---
+Nombre de cellules non vides: 27
+  A30: 10
+  B30: 20
+  C30: Ifaty-Ranohira
+  F30: 0
+  I30: 0
+  L30: 0
+  S30: 0
+  T30: Anja 
+  U30: 40000
+  V30: 2
+  W30: 80000
+  X30: 120000
+  AB30: 0
+  AG30: 0
+  AH30: Jardin du roi MP
+  AI30: 730000
+  AJ30: 1
+  AK30: 730000
+  AM30: 170000
+  AN30: 0
+  ... et 7 autres cellules
+
+--- LIGNE 31 (Excel) / 30 (pandas) ---
+Nombre de cellules non vides: 25
+  A31: 11
+  B31: 21
+  C31: Ranohira
+  F31: 0
+  I31: 0
+  L31: 0
+  S31: 0
+  T31: Zafimaniry
+  U31: 50000
+  V31: 0
+  W31: 0
+  Y31: Isalo
+  Z31: 130000
+  AA31: 2
+  AB31: 260000
+  AC31: 240000
+  AG31: 0
+  AH31: Jardin du roi MP
+  AI31: 730000
+  AJ31: 1
+  ... et 5 autres cellules
+
+--- LIGNE 32 (Excel) / 31 (pandas) ---
+Nombre de cellules non vides: 19
+  A32: 12
+  B32: 22
+  C32: Ranohira-wifi
+  F32: 0
+  I32: 0
+  L32: 0
+  S32: 0
+  T32: Palmarium
+  W32: 0
+  AB32: 0
+  AG32: 0
+  AH32: Zomatel
+  AI32: 220000
+  AJ32: 1
+  AK32: 220000
+  AO32: 0
+  AU32: 0
+  AX32: 0
+  BA32: 0
+
+--- LIGNE 33 (Excel) / 32 (pandas) ---
+Nombre de cellules non vides: 24
+  A33: 13
+  B33: 23
+  C33: wifi-atj
+  F33: 0
+  I33: 0
+  L33: 0
+  S33: 0
+  T33: Mitsinjo
+  U33: 65000
+  W33: 0
+  Y33: Zombitse
+  Z33: 90000
+  AA33: 2
+  AB33: 180000
+  AC33: 150000
+  AG33: 0
+  AH33: Menabe L
+  AI33: 250000
+  AJ33: 3
+  AK33: 750000
+  ... et 4 autres cellules
+
+--- LIGNE 34 (Excel) / 33 (pandas) ---
+Nombre de cellules non vides: 25
+  A34: 14
+  B34: 24
+  C34: Atj-Tnr
+  F34: 0
+  I34: 0
+  L34: 0
+  S34: 0
+  T34: PN andasibe
+  U34: 90000
+  V34: 2
+  W34: 180000
+  X34: 200000
+  AA34:  
+  AD34: htl - apt
+  AE34: 250000
+  AF34: 1
+  AG34: 250000
+  AH34: Radison Blu
+  AJ34: 1
+  AK34: 0
+  ... et 5 autres cellules
+
+--- LIGNE 35 (Excel) / 34 (pandas) ---
+Nombre de cellules non vides: 22
+  A35: 15
+  B35: 25
+  C35: Tnr-Nosy Be
+  E35: 1
+  F35: 0
+  I35: 0
+  L35: 0
+  O35: 0
+  S35: 0
+  T35: Tana 
+  U35: 30000
+  V35: 0
+  W35: 0
+  AB35: 0
+  AG35: 0
+  AH35: L'heure Bleu MP
+  AK35: 0
+  AO35: 0
+  AR35: 0
+  AU35: 0
+  ... et 2 autres cellules
+
+--- LIGNE 36 (Excel) / 35 (pandas) ---
+Nombre de cellules non vides: 23
+  A36: 16
+  B36: 26
+  C36: Nosy Be
+  F36: 0
+  I36: 0
+  L36: 0
+  O36: 0
+  S36: 0
+  T36: Diverses
+  U36: 30000
+  V36: 0
+  W36: 0
+  AB36: 0
+  AG36: 0
+  AH36: L'heure Bleu MP
+  AI36: 880000
+  AJ36: 5
+  AK36: 4400000
+  AO36: 0
+  AR36: 0
+  ... et 3 autres cellules
+
+--- LIGNE 37 (Excel) / 36 (pandas) ---
+Nombre de cellules non vides: 17
+  A37: 17
+  B37: 27
+  C37: Nosy Be
+  F37: 0
+  I37: 0
+  L37: 0
+  O37: 0
+  S37: 0
+  W37: 0
+  AB37: 0
+  AG37: 0
+  AH37: L'heure Bleu MP
+  AO37: 0
+  AR37: 0
+  AU37: 0
+  AX37: 0
+  BA37: 0
+
+--- LIGNE 38 (Excel) / 37 (pandas) ---
+Nombre de cellules non vides: 17
+  A38: 18
+  B38: 28
+  C38: Nosy Be
+  F38: 0
+  I38: 0
+  L38: 0
+  O38: 0
+  S38: 0
+  W38: 0
+  AB38: 0
+  AG38: 0
+  AH38: L'heure Bleu MP
+  AO38: 0
+  AR38: 0
+  AU38: 0
+  AX38: 0
+  BA38: 0
+
+--- LIGNE 39 (Excel) / 38 (pandas) ---
+Nombre de cellules non vides: 17
+  A39: 19
+  B39: 29
+  C39: Nosy Be
+  F39: 0
+  I39: 0
+  L39: 0
+  O39: 0
+  S39: 0
+  W39: 0
+  AB39: 0
+  AG39: 0
+  AH39: L'heure Bleu MP
+  AO39: 0
+  AR39: 0
+  AU39: 0
+  AX39: 0
+  BA39: 0
+
+--- LIGNE 40 (Excel) / 39 (pandas) ---
+Nombre de cellules non vides: 16
+  A40: 20
+  B40: 30
+  C40: Nosy Be -vuelo de regreso
+  F40: 0
+  I40: 0
+  L40: 0
+  O40: 0
+  S40: 0
+  W40: 0
+  AB40: 0
+  AG40: 0
+  AO40: 0
+  AR40: 0
+  AU40: 0
+  AX40: 0
+  BA40: 0
+
+--- LIGNE 41 (Excel) / 40 (pandas) ---
+Nombre de cellules non vides: 14
+  B41: 31
+  F41: 0
+  I41: 0
+  L41: 0
+  O41: 0
+  S41: 0
+  W41: 0
+  AB41: 0
+  AG41: 0
+  AO41: 0
+  AR41: 0
+  AU41: 0
+  AX41: 0
+  BA41: 0
+
+--- LIGNE 42 (Excel) / 41 (pandas) ---
+Nombre de cellules non vides: 12
+  I42: 0
+  L42: 0
+  O42: 0
+  S42: 0
+  W42: 0
+  AB42: 0
+  AG42: 0
+  AO42: 0
+  AR42: 0
+  AU42: 0
+  AX42: 0
+  BA42: 0
+
+--- LIGNE 43 (Excel) / 42 (pandas) ---
+Nombre de cellules non vides: 13
+  F43: 0
+  I43: 0
+  L43: 0
+  O43: 0
+  S43: 0
+  W43: 0
+  AB43: 0
+  AG43: 0
+  AO43: 0
+  AR43: 0
+  AU43: 0
+  AX43: 0
+  BA43: 0
+
+--- LIGNE 44 (Excel) / 43 (pandas) ---
+Nombre de cellules non vides: 13
+  F44: 0
+  I44: 0
+  L44: 0
+  O44: 0
+  S44: 0
+  W44: 0
+  AB44: 0
+  AG44: 0
+  AO44: 0
+  AR44: 0
+  AU44: 0
+  AX44: 0
+  BA44: 0
+
+--- LIGNE 45 (Excel) / 44 (pandas) ---
+Nombre de cellules non vides: 13
+  F45: 0
+  I45: 0
+  L45: 0
+  O45: 0
+  S45: 0
+  W45: 0
+  AB45: 0
+  AG45: 0
+  AO45: 0
+  AR45: 0
+  AU45: 0
+  AX45: 0
+  BA45: 0
+
+--- LIGNE 46 (Excel) / 45 (pandas) ---
+Nombre de cellules non vides: 13
+  F46: 0
+  I46: 0
+  L46: 0
+  O46: 0
+  S46: 0
+  W46: 0
+  AB46: 0
+  AG46: 0
+  AO46: 0
+  AR46: 0
+  AU46: 0
+  AX46: 0
+  BA46: 0
+
+--- LIGNE 47 (Excel) / 46 (pandas) ---
+Nombre de cellules non vides: 14
+  F47: 0
+  I47: 0
+  L47: 0
+  O47: 0
+  S47: 0
+  W47: 0
+  AB47: 0
+  AG47: 0
+  AK47: 0
+  AO47: 0
+  AR47: 0
+  AU47: 0
+  AX47: 0
+  BA47: 0
+
+--- LIGNE 48 (Excel) / 47 (pandas) ---
+Nombre de cellules non vides: 14
+  F48: 0
+  I48: 0
+  L48: 0
+  O48: 0
+  S48: 0
+  W48: 0
+  AB48: 0
+  AG48: 0
+  AK48: 0
+  AO48: 0
+  AR48: 0
+  AU48: 0
+  AX48: 0
+  BA48: 0
+
+--- LIGNE 49 (Excel) / 48 (pandas) ---
+Nombre de cellules non vides: 17
+  F49: 0
+  I49: 180000
+  L49: 540000
+  O49: 4802000
+  P49: 4200
+  S49: 3850000
+  W49: 870000
+  X49: 350000
+  AB49: 735000
+  AC49: 720000
+  AG49: 250000
+  AK49: 11782400
+  AO49: 0
+  AR49: 100000
+  AU49: 0
+  AX49: 0
+  BA49: 0
+
+--- LIGNE 51 (Excel) / 50 (pandas) ---
+Nombre de cellules non vides: 2
+  O51: 100
+  P51: 17
+
+--- LIGNE 52 (Excel) / 51 (pandas) ---
+Nombre de cellules non vides: 1
+  O52: 4200
+
+--- LIGNE 53 (Excel) / 52 (pandas) ---
+Nombre de cellules non vides: 1
+  O53: 714
+
+--- LIGNE 54 (Excel) / 53 (pandas) ---
+Nombre de cellules non vides: 2
+  O54: 5200
+  P54: 3712800
+
+====================================================================================================
+ANALYSE COLONNE PAR COLONNE (Références Excel)
+====================================================================================================
+
+
+--- COLONNE A (Excel) / Colonne 0 (pandas) ---
+Nombre de cellules non vides: 29
+Pourcentage rempli: 53.7%
+Premières valeurs:
+  Ligne 1: Taux 
+  Ligne 2: Ref client
+  Ligne 3: Nbr de pax
+  Ligne 4: Adulte
+  Ligne 5: Enfant
+  Ligne 6: Bébé
+  Ligne 7: Date de cotation
+  Ligne 8: chbre
+  Ligne 19: Jour
+  Ligne 21: 1
+  ... et 19 autres valeurs
+Types de données: {'str': 9, 'int': 20}
+Statistiques numériques:
+  Min: 1
+  Max: 20
+  Moyenne: 10.50
+
+--- COLONNE B (Excel) / Colonne 1 (pandas) ---
+Nombre de cellules non vides: 24
+Pourcentage rempli: 44.4%
+Premières valeurs:
+  Ligne 1: 4420
+  Ligne 19: Date
+  Ligne 20: 10
+  Ligne 21: 11
+  Ligne 22: 12
+  Ligne 23: 13
+  Ligne 24: 14
+  Ligne 25: 15
+  Ligne 26: 16
+  Ligne 27: 17
+  ... et 14 autres valeurs
+Types de données: {'int': 23, 'str': 1}
+Statistiques numériques:
+  Min: 10
+  Max: 4420
+  Moyenne: 211.78
+
+--- COLONNE C (Excel) / Colonne 2 (pandas) ---
+Nombre de cellules non vides: 21
+Pourcentage rempli: 38.9%
+Premières valeurs:
+  Ligne 19: Itinéraire
+  Ligne 21: Tnr-per
+  Ligne 22: per
+  Ligne 23: Per-atj
+  Ligne 24: atj-moq
+  Ligne 25: Morondava-Bekopaka
+  Ligne 26: Bekopaka
+  Ligne 27: Bekopaka-Morondava
+  Ligne 28: Morondava-Ifaty
+  Ligne 29: Ifaty
+  ... et 11 autres valeurs
+Types de données: {'str': 21}
+
+--- COLONNE D (Excel) / Colonne 3 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 1: Transfert 
+  Ligne 2: Pirogue
+  Ligne 3: Bateau
+  Ligne 4: Location
+  Ligne 5: Guidage
+  Ligne 6: Carburant
+  Ligne 7: Reserves
+  Ligne 8: Parcs
+  Ligne 9: hebergements
+  Ligne 10: Repas
+  ... et 5 autres valeurs
+Types de données: {'str': 13, 'int': 2}
+Statistiques numériques:
+  Min: 150000
+  Max: 250000
+  Moyenne: 200000.00
+
+--- COLONNE E (Excel) / Colonne 4 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 1: 250000
+  Ligne 2: 180000
+  Ligne 3: 540000
+  Ligne 4: 4802000
+  Ligne 5: 3850000
+  Ligne 6: 3712800
+  Ligne 7: 1220000
+  Ligne 8: 1455000
+  Ligne 9: 11882400
+  Ligne 10: 0
+  ... et 5 autres valeurs
+Types de données: {'int': 13, 'str': 2}
+Statistiques numériques:
+  Min: 0
+  Max: 27892200
+  Moyenne: 4291107.92
+
+--- COLONNE F (Excel) / Colonne 5 (pandas) ---
+Nombre de cellules non vides: 32
+Pourcentage rempli: 59.3%
+Premières valeurs:
+  Ligne 13: Prix
+  Ligne 14: 300000
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  ... et 22 autres valeurs
+Types de données: {'str': 2, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 300000
+  Moyenne: 10000.00
+
+--- COLONNE G (Excel) / Colonne 6 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Pirogue
+  Ligne 22: 45000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 45000
+  Max: 45000
+  Moyenne: 45000.00
+
+--- COLONNE H (Excel) / Colonne 7 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 3: Total
+  Ligne 4: Marge
+  Ligne 5: Tarif en Ariary
+  Ligne 6: Tarif en Euro
+  Ligne 19: Nbr
+  Ligne 22: 4
+Types de données: {'str': 5, 'int': 1}
+Statistiques numériques:
+  Min: 4
+  Max: 4
+  Moyenne: 4.00
+
+--- COLONNE I (Excel) / Colonne 8 (pandas) ---
+Nombre de cellules non vides: 36
+Pourcentage rempli: 66.7%
+Premières valeurs:
+  Ligne 3: 28192200
+  Ligne 4: 6766128
+  Ligne 5: 34958328
+  Ligne 6: 7909.12398190045
+  Ligne 15:   
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 180000
+  Ligne 23: 0
+  ... et 26 autres valeurs
+Types de données: {'int': 33, 'float': 1, 'str': 2}
+Statistiques numériques:
+  Min: 0
+  Max: 34958328
+  Moyenne: 2067193.09
+
+--- COLONNE J (Excel) / Colonne 9 (pandas) ---
+Nombre de cellules non vides: 3
+Pourcentage rempli: 5.6%
+Premières valeurs:
+  Ligne 19: bateau
+  Ligne 20: 225000
+  Ligne 21: 45000
+Types de données: {'str': 1, 'int': 2}
+Statistiques numériques:
+  Min: 45000
+  Max: 225000
+  Moyenne: 135000.00
+
+--- COLONNE K (Excel) / Colonne 10 (pandas) ---
+Nombre de cellules non vides: 19
+Pourcentage rempli: 35.2%
+Premières valeurs:
+  Ligne 2: 1
+  Ligne 3: 2
+  Ligne 4: 3
+  Ligne 5: 4
+  Ligne 6: 5
+  Ligne 7: 6
+  Ligne 8: 7
+  Ligne 9: 8
+  Ligne 10: 9
+  Ligne 11: 10
+  ... et 9 autres valeurs
+Types de données: {'int': 18, 'str': 1}
+Statistiques numériques:
+  Min: 1
+  Max: 16
+  Moyenne: 7.78
+
+--- COLONNE L (Excel) / Colonne 11 (pandas) ---
+Nombre de cellules non vides: 47
+Pourcentage rempli: 87.0%
+Premières valeurs:
+  Ligne 2: 7909.12398190045
+  Ligne 3: 3954.56199095023
+  Ligne 4: 2636.37466063348
+  Ligne 5: 1977.28099547511
+  Ligne 6: 1581.82479638009
+  Ligne 7: 1318.18733031674
+  Ligne 8: 1129.87485455721
+  Ligne 9: 988.640497737557
+  Ligne 10: 878.791553544495
+  Ligne 11: 790.912398190045
+  ... et 37 autres valeurs
+Types de données: {'float': 16, 'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 540000
+  Moyenne: 24059.53
+
+--- COLONNE M (Excel) / Colonne 12 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Location sans carburant
+  Ligne 20: 343000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 343000
+  Max: 343000
+  Moyenne: 343000.00
+
+--- COLONNE N (Excel) / Colonne 13 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 20: 14
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 14
+  Max: 14
+  Moyenne: 14.00
+
+--- COLONNE O (Excel) / Colonne 14 (pandas) ---
+Nombre de cellules non vides: 21
+Pourcentage rempli: 38.9%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 4802000
+  Ligne 35: 0
+  Ligne 36: 0
+  Ligne 37: 0
+  Ligne 38: 0
+  Ligne 39: 0
+  Ligne 40: 0
+  Ligne 41: 0
+  Ligne 42: 0
+  ... et 11 autres valeurs
+Types de données: {'str': 1, 'int': 20}
+Statistiques numériques:
+  Min: 0
+  Max: 4802000
+  Moyenne: 480710.70
+
+--- COLONNE P (Excel) / Colonne 15 (pandas) ---
+Nombre de cellules non vides: 5
+Pourcentage rempli: 9.3%
+Premières valeurs:
+  Ligne 19: Kilometrage
+  Ligne 21: 4200
+  Ligne 49: 4200
+  Ligne 51: 17
+  Ligne 54: 3712800
+Types de données: {'str': 1, 'int': 4}
+Statistiques numériques:
+  Min: 17
+  Max: 3712800
+  Moyenne: 930304.25
+
+--- COLONNE Q (Excel) / Colonne 16 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 20: 275000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 275000
+  Max: 275000
+  Moyenne: 275000.00
+
+--- COLONNE R (Excel) / Colonne 17 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Nbr 
+  Ligne 20: 14
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 14
+  Max: 14
+  Moyenne: 14.00
+
+--- COLONNE S (Excel) / Colonne 18 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: Prix
+  Ligne 20: 3850000
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 3850000
+  Moyenne: 256666.67
+
+--- COLONNE T (Excel) / Colonne 19 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Reserve
+  Ligne 21: Ambatolampy 
+  Ligne 22: RENIALA
+  Ligne 23: Allée des Baobab 
+  Ligne 25: Manandona 
+  Ligne 26: Vakona
+  Ligne 28: Kirindy
+  Ligne 29: Voimma
+  Ligne 30: Anja 
+  Ligne 31: Zafimaniry
+  ... et 5 autres valeurs
+Types de données: {'str': 15}
+
+--- COLONNE U (Excel) / Colonne 20 (pandas) ---
+Nombre de cellules non vides: 14
+Pourcentage rempli: 25.9%
+Premières valeurs:
+  Ligne 19: Prix 
+  Ligne 21: 10000
+  Ligne 22: 65000
+  Ligne 23: 20000
+  Ligne 25: 90000
+  Ligne 26: 65000
+  Ligne 28: 50000
+  Ligne 29: 65000
+  Ligne 30: 40000
+  Ligne 31: 50000
+  ... et 4 autres valeurs
+Types de données: {'str': 1, 'int': 13}
+Statistiques numériques:
+  Min: 10000
+  Max: 90000
+  Moyenne: 51538.46
+
+--- COLONNE V (Excel) / Colonne 21 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 21: 2
+  Ligne 22: 2
+  Ligne 23: 1
+  Ligne 24: 0
+  Ligne 25: 2
+  Ligne 26: 2
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 2
+  ... et 5 autres valeurs
+Types de données: {'str': 1, 'int': 14}
+Statistiques numériques:
+  Min: 0
+  Max: 2
+  Moyenne: 1.07
+
+--- COLONNE W (Excel) / Colonne 22 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 20000
+  Ligne 22: 130000
+  Ligne 23: 20000
+  Ligne 24: 0
+  Ligne 25: 180000
+  Ligne 26: 130000
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 870000
+  Moyenne: 58000.00
+
+--- COLONNE X (Excel) / Colonne 23 (pandas) ---
+Nombre de cellules non vides: 5
+Pourcentage rempli: 9.3%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 22: 30000
+  Ligne 30: 120000
+  Ligne 34: 200000
+  Ligne 49: 350000
+Types de données: {'str': 1, 'int': 4}
+Statistiques numériques:
+  Min: 30000
+  Max: 350000
+  Moyenne: 175000.00
+
+--- COLONNE Y (Excel) / Colonne 24 (pandas) ---
+Nombre de cellules non vides: 6
+Pourcentage rempli: 11.1%
+Premières valeurs:
+  Ligne 19: NOM
+  Ligne 27: Bemaraha
+  Ligne 28: Tritriva
+  Ligne 29: KIVALO
+  Ligne 31: Isalo
+  Ligne 33: Zombitse
+Types de données: {'str': 6}
+
+--- COLONNE Z (Excel) / Colonne 25 (pandas) ---
+Nombre de cellules non vides: 7
+Pourcentage rempli: 13.0%
+Premières valeurs:
+  Ligne 19: PN
+  Ligne 26: 25000
+  Ligne 27: 110000
+  Ligne 28: 25000
+  Ligne 29: 110000
+  Ligne 31: 130000
+  Ligne 33: 90000
+Types de données: {'str': 1, 'int': 6}
+Statistiques numériques:
+  Min: 25000
+  Max: 130000
+  Moyenne: 81666.67
+
+--- COLONNE AA (Excel) / Colonne 26 (pandas) ---
+Nombre de cellules non vides: 7
+Pourcentage rempli: 13.0%
+Premières valeurs:
+  Ligne 19: Nbr
+  Ligne 26: 3
+  Ligne 27: 2
+  Ligne 28: 0
+  Ligne 31: 2
+  Ligne 33: 2
+  Ligne 34:  
+Types de données: {'str': 2, 'int': 5}
+Statistiques numériques:
+  Min: 0
+  Max: 3
+  Moyenne: 1.80
+
+--- COLONNE AB (Excel) / Colonne 27 (pandas) ---
+Nombre de cellules non vides: 30
+Pourcentage rempli: 55.6%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 75000
+  Ligne 27: 220000
+  Ligne 28: 0
+  ... et 20 autres valeurs
+Types de données: {'str': 1, 'int': 29}
+Statistiques numériques:
+  Min: 0
+  Max: 735000
+  Moyenne: 50689.66
+
+--- COLONNE AC (Excel) / Colonne 28 (pandas) ---
+Nombre de cellules non vides: 5
+Pourcentage rempli: 9.3%
+Premières valeurs:
+  Ligne 19: Guidage
+  Ligne 27: 330000
+  Ligne 31: 240000
+  Ligne 33: 150000
+  Ligne 49: 720000
+Types de données: {'str': 1, 'int': 4}
+Statistiques numériques:
+  Min: 150000
+  Max: 720000
+  Moyenne: 360000.00
+
+--- COLONNE AD (Excel) / Colonne 29 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 34: htl - apt
+Types de données: {'str': 1}
+
+--- COLONNE AE (Excel) / Colonne 30 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: Transfert htl
+  Ligne 34: 250000
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 250000
+  Max: 250000
+  Moyenne: 250000.00
+
+--- COLONNE AF (Excel) / Colonne 31 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: nbr
+  Ligne 34: 1
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 1
+  Max: 1
+  Moyenne: 1.00
+
+--- COLONNE AG (Excel) / Colonne 32 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 250000
+  Moyenne: 16666.67
+
+--- COLONNE AH (Excel) / Colonne 33 (pandas) ---
+Nombre de cellules non vides: 20
+Pourcentage rempli: 37.0%
+Premières valeurs:
+  Ligne 19: Double
+  Ligne 21: Feo ny Ala
+  Ligne 22: Feo ny Ala
+  Ligne 23: Menabe L
+  Ligne 24: Palissandres
+  Ligne 25: Soleil du Tsingy PC
+  Ligne 26: Soleil du Tsingy PC
+  Ligne 27: Palissandres
+  Ligne 28: Bamboo club
+  Ligne 29: Bamboo club
+  ... et 10 autres valeurs
+Types de données: {'str': 20}
+
+--- COLONNE AI (Excel) / Colonne 34 (pandas) ---
+Nombre de cellules non vides: 15
+Pourcentage rempli: 27.8%
+Premières valeurs:
+  Ligne 19: Hotel
+  Ligne 21: 152000
+  Ligne 22: 152000
+  Ligne 23: 230000
+  Ligne 24: 984200
+  Ligne 25: 995000
+  Ligne 26: 995000
+  Ligne 27: 984200
+  Ligne 28: 230000
+  Ligne 29: 230000
+  ... et 5 autres valeurs
+Types de données: {'str': 1, 'int': 14}
+Statistiques numériques:
+  Min: 152000
+  Max: 995000
+  Moyenne: 554457.14
+
+--- COLONNE AJ (Excel) / Colonne 35 (pandas) ---
+Nombre de cellules non vides: 16
+Pourcentage rempli: 29.6%
+Premières valeurs:
+  Ligne 19: nbr
+  Ligne 21: 1
+  Ligne 22: 1
+  Ligne 23: 1
+  Ligne 24: 1
+  Ligne 25: 1
+  Ligne 26: 1
+  Ligne 27: 1
+  Ligne 28: 1
+  Ligne 29: 1
+  ... et 6 autres valeurs
+Types de données: {'str': 1, 'int': 15}
+Statistiques numériques:
+  Min: 1
+  Max: 5
+  Moyenne: 1.40
+
+--- COLONNE AK (Excel) / Colonne 36 (pandas) ---
+Nombre de cellules non vides: 21
+Pourcentage rempli: 38.9%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 152000
+  Ligne 22: 152000
+  Ligne 23: 230000
+  Ligne 24: 984200
+  Ligne 25: 995000
+  Ligne 26: 995000
+  Ligne 27: 984200
+  Ligne 28: 230000
+  ... et 11 autres valeurs
+Types de données: {'str': 1, 'int': 20}
+Statistiques numériques:
+  Min: 0
+  Max: 11782400
+  Moyenne: 1178240.00
+
+--- COLONNE AL (Excel) / Colonne 37 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Triple
+Types de données: {'str': 1}
+
+--- COLONNE AM (Excel) / Colonne 38 (pandas) ---
+Nombre de cellules non vides: 7
+Pourcentage rempli: 13.0%
+Premières valeurs:
+  Ligne 23: 172000
+  Ligne 24: 250000
+  Ligne 25: 250000
+  Ligne 26: 250000
+  Ligne 27: 250000
+  Ligne 29: 170000
+  Ligne 30: 170000
+Types de données: {'int': 7}
+Statistiques numériques:
+  Min: 170000
+  Max: 250000
+  Moyenne: 216000.00
+
+--- COLONNE AN (Excel) / Colonne 39 (pandas) ---
+Nombre de cellules non vides: 8
+Pourcentage rempli: 14.8%
+Premières valeurs:
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 0
+  Ligne 30: 0
+Types de données: {'int': 8}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AO (Excel) / Colonne 40 (pandas) ---
+Nombre de cellules non vides: 30
+Pourcentage rempli: 55.6%
+Premières valeurs:
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  Ligne 29: 0
+  ... et 20 autres valeurs
+Types de données: {'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AP (Excel) / Colonne 41 (pandas) ---
+Nombre de cellules non vides: 12
+Pourcentage rempli: 22.2%
+Premières valeurs:
+  Ligne 19: Vinette
+  Ligne 20: 5000
+  Ligne 21: 5000
+  Ligne 22: 5000
+  Ligne 23: 5000
+  Ligne 24: 5000
+  Ligne 25: 5000
+  Ligne 26: 5000
+  Ligne 27: 5000
+  Ligne 28: 5000
+  ... et 2 autres valeurs
+Types de données: {'str': 1, 'int': 11}
+Statistiques numériques:
+  Min: 5000
+  Max: 5000
+  Moyenne: 5000.00
+
+--- COLONNE AQ (Excel) / Colonne 42 (pandas) ---
+Nombre de cellules non vides: 2
+Pourcentage rempli: 3.7%
+Premières valeurs:
+  Ligne 19: nbr 
+  Ligne 20: 20
+Types de données: {'str': 1, 'int': 1}
+Statistiques numériques:
+  Min: 20
+  Max: 20
+  Moyenne: 20.00
+
+--- COLONNE AR (Excel) / Colonne 43 (pandas) ---
+Nombre de cellules non vides: 27
+Pourcentage rempli: 50.0%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 100000
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 17 autres valeurs
+Types de données: {'str': 1, 'int': 26}
+Statistiques numériques:
+  Min: 0
+  Max: 100000
+  Moyenne: 7692.31
+
+--- COLONNE AS (Excel) / Colonne 44 (pandas) ---
+Nombre de cellules non vides: 13
+Pourcentage rempli: 24.1%
+Premières valeurs:
+  Ligne 19: PD
+  Ligne 20: 25000
+  Ligne 21: 25000
+  Ligne 22: 25000
+  Ligne 23: 65000
+  Ligne 24: 25000
+  Ligne 25: 25000
+  Ligne 26: 25000
+  Ligne 27: 25000
+  Ligne 28: 50000
+  ... et 3 autres valeurs
+Types de données: {'str': 1, 'int': 12}
+Statistiques numériques:
+  Min: 25000
+  Max: 65000
+  Moyenne: 32500.00
+
+--- COLONNE AT (Excel) / Colonne 45 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: nbr
+Types de données: {'str': 1}
+
+--- COLONNE AU (Excel) / Colonne 46 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AV (Excel) / Colonne 47 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: DN
+Types de données: {'str': 1}
+
+--- COLONNE AW (Excel) / Colonne 48 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Nbr
+Types de données: {'str': 1}
+
+--- COLONNE AX (Excel) / Colonne 49 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: Prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+--- COLONNE AY (Excel) / Colonne 50 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: DJ
+Types de données: {'str': 1}
+
+--- COLONNE AZ (Excel) / Colonne 51 (pandas) ---
+Nombre de cellules non vides: 1
+Pourcentage rempli: 1.9%
+Premières valeurs:
+  Ligne 19: Nbr 
+Types de données: {'str': 1}
+
+--- COLONNE BA (Excel) / Colonne 52 (pandas) ---
+Nombre de cellules non vides: 31
+Pourcentage rempli: 57.4%
+Premières valeurs:
+  Ligne 19: prix
+  Ligne 20: 0
+  Ligne 21: 0
+  Ligne 22: 0
+  Ligne 23: 0
+  Ligne 24: 0
+  Ligne 25: 0
+  Ligne 26: 0
+  Ligne 27: 0
+  Ligne 28: 0
+  ... et 21 autres valeurs
+Types de données: {'str': 1, 'int': 30}
+Statistiques numériques:
+  Min: 0
+  Max: 0
+  Moyenne: 0.00
+
+====================================================================================================
+ANALYSE STRUCTURELLE - IDENTIFICATION DES SECTIONS
+====================================================================================================
+
+Ligne 2 - En-têtes potentiels trouvés:
+  A2: Ref client
+Ligne 3 - En-têtes potentiels trouvés:
+  A3: Nbr de pax
+  H3: Total
+Ligne 4 - En-têtes potentiels trouvés:
+  A4: Adulte
+Ligne 5 - En-têtes potentiels trouvés:
+  A5: Enfant
+Ligne 7 - En-têtes potentiels trouvés:
+  A7: Date de cotation
+Ligne 11 - En-têtes potentiels trouvés:
+  D11: S Total 
+Ligne 13 - En-têtes potentiels trouvés:
+  E13: Nbr
+  F13: Prix
+Ligne 19 - En-têtes potentiels trouvés:
+  A19: Jour
+  B19: Date
+  E19: Nbr de voiture
+  F19: Prix
+  H19: Nbr
+  I19: Prix
+  K19: nbr
+  L19: prix
+  N19: Nbr
+  O19: prix
+  R19: Nbr 
+  S19: Prix
+  U19: Prix 
+  V19: Nbr
+  W19: prix
+  AA19: Nbr
+  AB19: prix
+  AF19: nbr
+  AG19: prix
+  AJ19: nbr
+  AK19: prix
+  AQ19: nbr 
+  AR19: prix
+  AT19: nbr
+  AU19: prix
+  AW19: Nbr
+  AX19: Prix
+  AZ19: Nbr 
+  BA19: prix
+
+====================================================================================================
+MATRICE COMPLÈTE DES DONNÉES (Toutes les cellules non vides)
+====================================================================================================
+
+Total de cellules non vides dans la feuille: 755
+Total de cellules possibles: 2862 = 2862
+Pourcentage de remplissage: 26.4%
+
+====================================================================================================
+RÉSUMÉ FINAL
+====================================================================================================
+
+Fichier analysé: Bases de datos internos.xlsx
+Nombre total de feuilles: 2
+
+Feuille 'Sara 4 pax':
+  - Cellules non vides: 751 / 2862
+  - Taux de remplissage: 26.2%
+  - Lignes avec données: 52
+  - Colonnes avec données: 53
+
+Feuille 'Alvaro 2 pax':
+  - Cellules non vides: 755 / 2862
+  - Taux de remplissage: 26.4%
+  - Lignes avec données: 52
+  - Colonnes avec données: 53
+
+Résultats détaillés sauvegardés dans: Bases de datos internos_analyse_detaille.json
+
+====================================================================================================
+ANALYSE TERMINÉE
+====================================================================================================

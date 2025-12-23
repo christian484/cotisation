@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Clients{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>👥 Liste des Clients</h1>
+    <a href="{{ url_for('nouveau_client') }}" class="btn btn-primary">
+        ➕ Nouveau Client
+    </a>
+</div>
+
+{% if clients %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Référence</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Nombre de Devis</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td><strong>{{ client.reference }}</strong></td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.email or '-' }}</td>
+                <td>{{ client.telephone or '-' }}</td>
+                <td>
+                    <span class="badge bg-info">{{ client.nombre_devis or 0 }}</span>
+                </td>
+                <td>
+                    <a href="{{ url_for('nouveau_devis') }}?client_id={{ client.id }}" 
+                       class="btn btn-sm btn-outline-primary">
+                        📝 Nouveau Devis
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    <h4>Aucun client trouvé</h4>
+    <p>Commencez par créer votre premier client.</p>
+    <a href="{{ url_for('nouveau_client') }}" class="btn btn-primary">Créer un client</a>
+</div>
+{% endif %}
+{% endblock %}
+
